@@ -33,25 +33,3 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
-
-# READ - Ottieni tutti gli utenti
-@app.get("/users", response_model=List[User])
-def read_users():
-    return users_db
-
-# READ - Ottieni un utente specifico per ID
-@app.get("/users/{user_id}", response_model=User)
-def read_user(user_id: int):
-    for user in users_db:
-        if user["id"] == user_id:
-            return user
-    raise HTTPException(status_code=404, detail="Utente non trovato")
-
-# DELETE - Cancella un utente
-@app.delete("/users/{user_id}")
-def delete_user(user_id: int):
-    for i, user in enumerate(users_db):
-        if user["id"] == user_id:
-            deleted_user = users_db.pop(i)
-            return {"message": "Utente eliminato", "user": deleted_user}
-    raise HTTPException(status_code=404, detail="Utente non trovato")
