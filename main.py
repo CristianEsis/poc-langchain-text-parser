@@ -42,7 +42,7 @@ def create_user(user: User):
 def read_users():
     return users_db
 
-# Leggi un utente per ID
+# READ - Ottieni un utente specifico per ID
 @app.get("/users/{user_id}", response_model=User)
 def read_user(user_id: int):
     for user in users_db:
