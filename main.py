@@ -27,3 +27,25 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+#create user
+@app.post("/users/create_user")
+def create_user(user: User):
+    for utente in users_db:
+        if utente["id"] == user.id:
+            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
+    users_db.append(user.model_dump())
+    return user
+
+# Leggi tutti gli utenti
+@app.get("/users", response_model=List[User])
+def read_users():
+    return users_db
+
+# Leggi un utente per ID
+@app.get("/users/{user_id}", response_model=User)
+def read_user(user_id: int):
+    for user in users_db:
+        if user["id"] == user_id:
+            return user
+    raise HTTPException(status_code=404, detail="Utente non trovato")
