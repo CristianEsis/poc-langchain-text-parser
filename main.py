@@ -35,3 +35,11 @@ def delete_user(user_id: int):
             deleted_user = users_db.pop(i)
             return {"message": "Utente eliminato", "user": deleted_user}
     raise HTTPException(status_code=404, detail="Utente non trovato")
+
+@app.put("/users/{user_id}")
+def update_user(user_id: int, updated_user: User):
+    for user in users_db:
+        if user["id"] == user_id:
+            user.update(updated_user.dict(exclude_unset=True))
+            return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
+    raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
