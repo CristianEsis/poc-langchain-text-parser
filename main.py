@@ -13,18 +13,12 @@ class User(BaseModel):
     id: Optional[int] = None
     email: str
     name: str
-# Helper per generare nuovo ID
-def generate_id():
-    if users_db:
-        return max(user["id"] for user in users_db) + 1
-    return 1
 
 
 app = FastAPI(
     title="My FastAPI App",
     description="Un progetto FastAPI minimale, pronto per crescere.",
-    version="0.1.0"
-)
+    version="0.1.0")
 
 @app.get("/")
 def read_root():
