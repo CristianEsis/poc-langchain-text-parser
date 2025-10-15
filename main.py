@@ -14,7 +14,6 @@ class User(BaseModel):
     email: str
     name: str
 
-
 app = FastAPI(
     title="My FastAPI App",
     description="Un progetto FastAPI minimale, pronto per crescere.",
@@ -28,7 +27,6 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-<<<<<<< HEAD
 # DELETE - Cancella un utente
 @app.delete("/users/{user_id}")
 def delete_user(user_id: int):
@@ -36,17 +34,30 @@ def delete_user(user_id: int):
         if user["id"] == user_id:
             deleted_user = users_db.pop(i)
             return {"message": "Utente eliminato", "user": deleted_user}
-=======
 # READ - Ottieni tutti gli utenti
 @app.get("/users", response_model=List[User])
 def read_users():
     return users_db
 
-# READ - Ottieni un utente specifico per ID
 @app.get("/users/{user_id}", response_model=User)
 def read_user(user_id: int):
     for user in users_db:
         if user["id"] == user_id:
             return user
->>>>>>> 350c3356f5687da12e9ea4576f36a797b7676bf0
     raise HTTPException(status_code=404, detail="Utente non trovato")
+
+@app.post("/users/create_user")
+def create_user(user: User):
+    for utente in users_db:
+        if utente["id"] == user.id:
+            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
+    users_db.append(user.model_dump())
+    return user
+
+@app.put("/users/{user_id}")
+def update_user(user_id: int, updated_user: User):
+    for user in users_db:
+        if user["id"] == user_id:
+            user.update(updated_user.dict(exclude_unset=True))
+            return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
+    raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
