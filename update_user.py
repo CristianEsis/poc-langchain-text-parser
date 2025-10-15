@@ -15,8 +15,8 @@ class User(BaseModel):
 app = FastAPI(
     title="My FastAPI App",
     description="Un progetto FastAPI minimale, pronto per crescere.",
-    version="0.1.0")
-
+    version="0.1.0"
+)
 
 @app.get("/")
 def read_root():
@@ -26,10 +26,11 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-#update the user
-@app.put("/update_the_user")
-def update_user(index: int, new_list: List[str]):
-    if index < 0 or index > len(users_db):
-        raise HTTPException(404, detail=f"Non esiste la lista {index}")
-    users_db[index] = new_list
-    return {"msg": f"Lista {index} aggiornata con successo!"}
+# Update user by ID
+@app.put("/users/{user_id}")
+def update_user(user_id: int, updated_user: User):
+    for user in users_db:
+        if user["id"] == user_id:
+            user.update(updated_user.dict(exclude_unset=True))
+            return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
+    raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
