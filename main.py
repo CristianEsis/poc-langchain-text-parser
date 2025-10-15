@@ -36,6 +36,16 @@ def update_user(user_id: int, updated_user: User):
             return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
     raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
 # READ - Ottieni tutti gli utenti
+#create user
+@app.post("/users/create_user")
+def create_user(user: User):
+    for utente in users_db:
+        if utente["id"] == user.id:
+            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
+    users_db.append(user.model_dump())
+    return user
+
+# Leggi tutti gli utenti
 @app.get("/users", response_model=List[User])
 def read_users():
     return users_db
