@@ -13,11 +13,6 @@ class User(BaseModel):
     id: Optional[int] = None
     email: str
     name: str
-# Helper per generare nuovo ID
-def generate_id():
-    if users_db:
-        return max(user["id"] for user in users_db) + 1
-    return 1
 
 
 app = FastAPI(
@@ -32,4 +27,3 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
-
