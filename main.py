@@ -35,3 +35,15 @@ def update_user(user_id: int, updated_user: User):
             user.update(updated_user.dict(exclude_unset=True))
             return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
     raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
+# READ - Ottieni tutti gli utenti
+@app.get("/users", response_model=List[User])
+def read_users():
+    return users_db
+
+# READ - Ottieni un utente specifico per ID
+@app.get("/users/{user_id}", response_model=User)
+def read_user(user_id: int):
+    for user in users_db:
+        if user["id"] == user_id:
+            return user
+    raise HTTPException(status_code=404, detail="Utente non trovato")
