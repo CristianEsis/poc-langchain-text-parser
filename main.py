@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 
+from llm import question_answer
+
 # Variabile globale per memorizzare gli utenti
 users_db = [
     {"id": 1, "email": "mario@example.com", "name": "Mario Rossi"},
@@ -61,3 +63,12 @@ def update_user(user_id: int, updated_user: User):
             user.update(updated_user.dict(exclude_unset=True))
             return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
     raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
+
+
+@app.post("/ask")
+def ask_domanda(payload: dict):
+    domanda = payload.get("domanda", "")
+    if not domanda:
+        return {"error": "Nessuna domanda fornita"}
+    risposta = question_answer(domanda)
+    return {"domanda": domanda, "risposta": risposta}
