@@ -9,11 +9,7 @@ class WeatherAPI:
     Fornisce metodi per ottenere coordinate, dati meteo attuali e qualità dell'aria.
     """
     def __init__(self, openweather_api_key):
-        """
-        Inizializza il client API con la chiave API di OpenWeatherMap.
-
-        :param openweather_api_key: Chiave API per OpenWeatherMap.
-        """
+        
         self.OPENWEATHER_API_KEY = openweather_api_key
         self.OWM_CURRENT_URL = "http://api.openweathermap.org/data/2.5/weather"
         self.OWN_FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast"
@@ -25,8 +21,6 @@ class WeatherAPI:
         """
         Ottiene le coordinate (latitudine, longitudine) per un nome di città usando OpenWeatherMap.
 
-        :param city_name: Nome della città.
-        :return: Tupla (lat, lon) o (None, None) se non trovata.
         """
         params = {
             'q': city_name,
@@ -43,10 +37,6 @@ class WeatherAPI:
     def get_current_weather_owm(self, lat, lon):
         """
         Ottiene i dati meteo attuali da OpenWeatherMap.
-
-        :param lat: Latitudine.
-        :param lon: Longitudine.
-        :return: Dati meteo JSON o None se errore.
         """
         params = {
             'lat': lat,
@@ -80,10 +70,6 @@ class WeatherAPI:
     def get_air_quality_owm(self, lat, lon):
         """
         Ottiene i dati sulla qualità dell'aria da OpenWeatherMap.
-
-        :param lat: Latitudine.
-        :param lon: Longitudine.
-        :return: Dati qualità aria JSON o None se errore.
         """
         params = {
             'lat': lat,
@@ -100,10 +86,6 @@ class WeatherAPI:
     def get_current_weather_openmeteo(self, lat, lon):
         """
         Ottiene i dati meteo attuali da Open-Meteo.
-
-        :param lat: Latitudine.
-        :param lon: Longitudine.
-        :return: Dati meteo JSON o None se errore.
         """
         params = {
             'latitude': lat,
@@ -122,8 +104,6 @@ class WeatherAPI:
         """
         Ottiene tutti i dati per una città da entrambe le API.
 
-        :param city_name: Nome della città.
-        :return: Dizionario con tutti i dati o None se fallisce.
         """
         lat, lon = self.get_coordinates(city_name)
         if not lat or not lon:
@@ -172,7 +152,22 @@ class WeatherAPI:
                 'pm10': components['pm10']
             }
         return owm_parsed
-
+    def _parse_forecast_data(self, forecast_data):
+        if not forecast_data or 'list' not in forecast_data:
+            return None
+        parsed_list = []
+        for item in forecast_data['list'][:5]:
+            main = item['main']
+            parsed_list.append({
+                'datetime': item['dt_txt'],
+                'temperature': main['temp'],
+                'feels_like': main['feels_like'],
+                'humidity': main['humidity']
+                'pressure': main['pressure']
+                'description': item['weather'][0]['description']
+            })
+        return parsed_list
+    
     def _parse_openmeteo_data(self, meteo_data):
         """ Metodo privato per estrarre e formattare i dati da Open-Meteo. """
         if not meteo_data:
@@ -190,15 +185,12 @@ def save_to_json(data, filename):
     """
     Salva i dati in un file JSON.
 
-    :param data: Dati da salvare.
-    :param filename: Nome del file di output.
     """
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Dati salvati in: {filename}")
 
 
-# --- Blocco eseguito solo se lo script viene lanciato direttamente ---
 if __name__ == "__main__":
     API_KEY = '2300cb7362ef7560c3e75c5b6aa48b2c'  # Inserisci la tua chiave API qui
     client = WeatherAPI(API_KEY)
