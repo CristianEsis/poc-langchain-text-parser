@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
+import json
+from json.decoder import JSONDecodeError
 import re
 from llm import question_answer
 
@@ -10,7 +12,6 @@ def validation_email(email: str):
 
 # Modello utente
 
-tentativi = 0
 class User(BaseModel):
     id: int | None = None
     name: str | None = None
@@ -24,6 +25,21 @@ app = FastAPI(
     description="Un progetto FastAPI minimale, pronto per crescere.",
     version="0.1.0")
 
+def read_db():
+    try:
+        with open('lista_utenti_LLM_meteo_cybercats.json', 'r', encoding='utf-8') as f:
+            db = json.load(f)
+            if not isinstance(db, list):
+                db = []
+    except (FileNotFoundError, JSONDecodeError):
+        db = []
+    return db
+
+def update_db(db):
+    with open('lista_utenti_LLM_meteo_cybercats.json', 'w', encoding='utf-8') as f:
+        json.dump(db, f, indent=4, ensure_ascii=False)
+
+
 @app.get("/")
 def read_root():
     return {"message": "Benvenuto nella mia API 🚀"}
@@ -31,67 +47,46 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
-users_db: list[dict] = []
 
-@app.post("/user/register")
-def register_new_user(user: User):
-    if user.tentativi is not 0:
-        raise HTTPException(status_code=400, detail="Non puoi impostare il valore dei tentativi manualmente")
-    if user.check_login is not False:
-        raise HTTPException(status_code=400, detail="Non puoi impostare il valore del login manualmente")
-    if not user.password:
-            raise HTTPException(status_code=400, detail="Password vuota")
-    if not validation_email(user.email):
-        raise HTTPException(status_code=400, detail="Email non valida")
-
-    for u in users_db:
-        if u["id"] == user.id:
-            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
-    users_db.append(user.model_dump())
-    return user
-
-@app.post("/user/login")
-def login_user(user: User):
-    for u in users_db:
-        if u["email"] == user.email:
-            if u["password"] == user.password:
-                u["check_login"] = True
-                u["tentativi"] = 0
-                return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
-
-            u["tentativi"] += 1
-            remaining = 5 - u["tentativi"]
-            if u["tentativi"] >= 5:
-                raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
-            else:
-                raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
-
+# DELETE - Cancella un utente
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int):
+    db = read_db()
+    db = [utente for utente in db if utente.get("id") != user_id]
+    update_db(db)
+    return {"detail": "Utente cancellato dal file se esistente", "user_id": user_id}
 
 # READ - Ottieni tutti gli utenti
 @app.get("/users", response_model=List[User])
 def read_users():
-    return users_db
+    db = read_db()
+    return db
 
 @app.get("/users/{user_id}", response_model=User)
 def read_user(user_id: int):
-    for user in users_db:
+    db = read_db()
+    for user in db:
         if user["id"] == user_id:
             return user
     raise HTTPException(status_code=404, detail="Utente non trovato")
 
 @app.post("/users/create_user")
 def create_user(user: User):
-    for utente in users_db:
+    db = read_db()
+    for utente in db:
         if utente["id"] == user.id:
             raise HTTPException(status_code=400, detail="L'ID utente esiste già")
-    users_db.append(user.model_dump())
-    return user
+    db.append(user.model_dump())
+    update_db(db)
+    return {"detail": "Utente salvato", "utente": user.model_dump()}
 
 @app.put("/users/{user_id}")
 def update_user(user_id: int, updated_user: User):
-    for user in users_db:
+    db = read_db()
+    for user in db:
         if user["id"] == user_id:
-            user.update(updated_user.dict(exclude_unset=True))
+            user.update(updated_user.model_dump(exclude_unset=True))
+            update_db(db)
             return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
     raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
 
