@@ -17,6 +17,8 @@ def read_db():
             if not isinstance(db, list):
                 db = []
     except (FileNotFoundError, JSONDecodeError):
+        with open('lista_utenti_LLM_meteo_cybercats.json', 'w', encoding='utf-8') as f:
+            json.dump([], f)
         db = []
     return db
 
