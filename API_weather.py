@@ -27,11 +27,19 @@ class WeatherAPI:
             'limit': 1,
             'appid': self.OPENWEATHER_API_KEY
         }
+        print(f"[DEBUG] chiamata encoding per {city_name}")
         response = requests.get(self.OWM_GEO_URL, params=params)
         if response.status_code == 200:
             data = response.json()
             if data and len(data) > 0:
-                return data[0]['lat'], data[0]['lon']
+                lat = data[0]['lat']
+                lon = data[0]['lon']
+                print(f"[DEBUG] coordinate trovate: lat ={lat}, lon= {lon}")
+                return lat, lon
+            else:
+                print(f"[ERROR] nessuna coordinata trovata per {city_name}")
+        else:
+            print(f"[ERROR] errore geocoding: {response.status_code} - {response.text}")
         return None, None
 
     def get_current_weather_owm(self, lat, lon):
@@ -46,9 +54,10 @@ class WeatherAPI:
         }
         response = requests.get(self.OWM_CURRENT_URL, params=params)
         if response.status_code == 200:
+            print("[DEBUG] Meteo Attuale ok!")
             return response.json()
         else:
-            print(f"Errore nella richiesta meteo OpenWeatherMap: {response.status_code}")
+            print(f"Errore nella richiesta meteo OpenWeatherMap: {response.status_code} - {response.text}")
             return None
 
     def get_forecast_5d_own(self, lat, lon):
@@ -61,11 +70,12 @@ class WeatherAPI:
             'appid': self.OPENWEATHER_API_KEY,
             'units':'metric'
         }
+        print(f"[DEBUG] Chiamata previsioni 5 giorni")
         response = requests.get(self.OWN_FORECAST_URL, params=params)
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"Errore: {response.status_code}")
+            print(f"Errore: {response.status_code} - {response.text}")
         
     def get_air_quality_owm(self, lat, lon):
         """
@@ -80,7 +90,7 @@ class WeatherAPI:
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"Errore nella richiesta qualità aria OpenWeatherMap: {response.status_code}")
+            print(f"Errore nella richiesta qualità aria: {response.status_code} - {response.text}")
             return None
 
     def get_current_weather_openmeteo(self, lat, lon):
@@ -97,7 +107,7 @@ class WeatherAPI:
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"Errore nella richiesta Open-Meteo: {response.status_code}")
+            print(f"Errore nella richiesta Open-Meteo: {response.status_code} - {response.text}")
             return None
 
     def get_all_data_for_city(self, city_name):
@@ -110,25 +120,33 @@ class WeatherAPI:
             print(f"Coordinate non trovate per {city_name}")
             return None
 
-        # Dati OpenWeatherMap
+        
         weather_owm = self.get_current_weather_owm(lat, lon)
         air_owm = self.get_air_quality_owm(lat, lon)
+        forecast_own = self.get_forecast_5d_own(lat, lon)
         parsed_owm = self._parse_owm_data(weather_owm, air_owm)
+        parsed_forecast = self._parse_forecast_data(forecast_own)
 
-        # Dati Open-Meteo
         weather_om = self.get_current_weather_openmeteo(lat, lon)
         parsed_om = self._parse_openmeteo_data(weather_om)
 
         return {
             'city': city_name,
             'openweathermap': parsed_owm,
+            'openweathermap_forecast_5d': parsed_forecast,
             'openmeteo': parsed_om,
             'timestamp': datetime.now().isoformat()
         }
+        if parsed_forecast is not None:
+            print(f"Previsione parsata: {len(parsed_forecast)}")
+        else:
+            print("nessun data di previsione salvato")
+        return result
 
     def _parse_owm_data(self, weather_data, air_data):
         """ Metodo privato per estrarre e formattare i dati da OpenWeatherMap. """
         if not weather_data:
+            print("Dati meteo attuali mancanti per il parsing")
             return None
         main = weather_data['main']
         wind = weather_data['wind']
@@ -152,20 +170,25 @@ class WeatherAPI:
                 'pm10': components['pm10']
             }
         return owm_parsed
+    
     def _parse_forecast_data(self, forecast_data):
         if not forecast_data or 'list' not in forecast_data:
             return None
         parsed_list = []
-        for item in forecast_data['list'][:5]:
-            main = item['main']
-            parsed_list.append({
-                'datetime': item['dt_txt'],
-                'temperature': main['temp'],
-                'feels_like': main['feels_like'],
-                'humidity': main['humidity'],
-                'pressure': main['pressure'],
-                'description': item['weather'][0]['description']
-            })
+        for item in forecast_data['list']:
+            try:
+                main = item['main']
+                parsed_list.append({
+                    'datetime': item['dt_txt'],
+                    'temperature': main['temp'],
+                    'feels_like': main['feels_like'],
+                    'humidity': main['humidity'],
+                    'pressure': main['pressure'],
+                    'description': item['weather'][0]['description']
+                })
+            except(KeyError, IndexError) as e:
+                print(f"Errore nel parsing di un elemento della previsione: {e}")
+                continue
         return parsed_list
     
     def _parse_openmeteo_data(self, meteo_data):
@@ -184,7 +207,6 @@ class WeatherAPI:
 def save_to_json(data, filename):
     """
     Salva i dati in un file JSON.
-
     """
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -200,7 +222,7 @@ if __name__ == "__main__":
         print("Nessuna città inserita. Uscita.")
         exit()
 
-    print(f"\n=== Ottenendo dati per {city} ===")
+    print(f"\nOttenendo dati per {city}")
     result = client.get_all_data_for_city(city)
     if result:
         output_filename = f"weather_data_{city}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
