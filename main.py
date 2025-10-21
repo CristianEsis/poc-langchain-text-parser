@@ -60,6 +60,34 @@ def login_user(user: User):
         raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {5 - tentativi}")
 
 
+# READ - Ottieni tutti gli utenti
+@app.get("/users", response_model=List[User])
+def read_users():
+    return users_db
+
+@app.get("/users/{user_id}", response_model=User)
+def read_user(user_id: int):
+    for user in users_db:
+        if user["id"] == user_id:
+            return user
+    raise HTTPException(status_code=404, detail="Utente non trovato")
+
+@app.post("/users/create_user")
+def create_user(user: User):
+    for utente in users_db:
+        if utente["id"] == user.id:
+            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
+    users_db.append(user.model_dump())
+    return user
+
+@app.put("/users/{user_id}")
+def update_user(user_id: int, updated_user: User):
+    for user in users_db:
+        if user["id"] == user_id:
+            user.update(updated_user.dict(exclude_unset=True))
+            return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
+    raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
+
 @app.post("/ask")
 def ask_domanda(payload: dict):
     domanda = payload.get("domanda", "")
