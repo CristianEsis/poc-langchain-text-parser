@@ -9,12 +9,15 @@ def validation_email(email: str):
     return re.match(pattern, email) is not None
 
 # Modello utente
+
+tentativi = 0
 class User(BaseModel):
     id: int | None = None
     name: str | None = None
     email: str| None = None
     password: str | None = None
     check_login: bool = False
+    tentativi: int = 0
 
 app = FastAPI(
     title="My FastAPI App",
@@ -32,6 +35,8 @@ users_db: list[dict] = []
 
 @app.post("/user/register")
 def register_new_user(user: User):
+    if user.tentativi is not 0:
+        raise HTTPException(status_code=400, detail="Non puoi impostare il valore dei tentativi manualmente")
     if user.check_login is not False:
         raise HTTPException(status_code=400, detail="Non puoi impostare il valore del login manualmente")
     if not user.password:
@@ -47,17 +52,19 @@ def register_new_user(user: User):
 
 @app.post("/user/login")
 def login_user(user: User):
-    global tentativi 
     for u in users_db:
-        if u["email"] == user.email and u["password"] == user.password:
-            u["check_login"] = True
-            tentativi = 0
-            return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
-    tentativi += 1
-    if tentativi >= 5:
-        raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
-    else:
-        raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {5 - tentativi}")
+        if u["email"] == user.email:
+            if u["password"] == user.password:
+                u["check_login"] = True
+                u["tentativi"] = 0
+                return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
+
+            u["tentativi"] += 1
+            remaining = 5 - u["tentativi"]
+            if u["tentativi"] >= 5:
+                raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
+            else:
+                raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
 
 
 # READ - Ottieni tutti gli utenti
