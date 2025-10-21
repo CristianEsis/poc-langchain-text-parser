@@ -16,6 +16,7 @@ class WeatherAPI:
         """
         self.OPENWEATHER_API_KEY = openweather_api_key
         self.OWM_CURRENT_URL = "http://api.openweathermap.org/data/2.5/weather"
+        self.OWN_FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast"
         self.OWM_AIR_POLLUTION_URL = "http://api.openweathermap.org/data/2.5/air_pollution"
         self.OWM_GEO_URL = "http://api.openweathermap.org/geo/1.0/direct"
         self.OPEN_METEO_CURRENT_URL = "https://api.open-meteo.com/v1/forecast"
@@ -60,6 +61,22 @@ class WeatherAPI:
             print(f"Errore nella richiesta meteo OpenWeatherMap: {response.status_code}")
             return None
 
+    def get_forecast_5d_own(self, lat, lon):
+        """
+        ottieni la previsione a 5 giorni
+        """
+        params={
+            'lat': lat,
+            'lon':lon,
+            'appid': self.OPENWEATHER_API_KEY,
+            'units':'metric'
+        }
+        response = requests.get(self.OWN_FORECAST_URL, params=params)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Errore: {response.status_code}")
+        
     def get_air_quality_owm(self, lat, lon):
         """
         Ottiene i dati sulla qualità dell'aria da OpenWeatherMap.
