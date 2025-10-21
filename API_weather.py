@@ -162,8 +162,8 @@ class WeatherAPI:
                 'datetime': item['dt_txt'],
                 'temperature': main['temp'],
                 'feels_like': main['feels_like'],
-                'humidity': main['humidity']
-                'pressure': main['pressure']
+                'humidity': main['humidity'],
+                'pressure': main['pressure'],
                 'description': item['weather'][0]['description']
             })
         return parsed_list
