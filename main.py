@@ -6,6 +6,10 @@ from json.decoder import JSONDecodeError
 import re
 from llm import question_answer
 
+ADMIN_EMAIL = "admin@cybercats.it"
+ADMIN_PASSWORD = "admin123"
+admin_logged = False 
+
 def validation_email(email: str):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
@@ -76,7 +80,13 @@ def register_new_user(user: User):
 
 @app.post("/user/login")
 def login_user(user: User):
+    global admin_logged
     db = read_db()
+
+    if user.email == ADMIN_EMAIL and user.password == ADMIN_PASSWORD:
+        admin_logged = True
+        return {"msg": "Login admin effettuato con successo!"}
+    
     for u in db:
         if u["email"] == user.email:
             if u["tentativi"] >= 5:
@@ -95,18 +105,23 @@ def login_user(user: User):
 
     raise HTTPException(status_code=401, detail="Email non registrata")
 
-@app.get("/users", response_model=List[User])
+@app.get("/users")
 def read_users():
     db = read_db()
-    return db
+    global admin_logged
 
-@app.get("/users/{user_id}", response_model=User)
-def read_user(user_id: int):
-    db = read_db()
-    for user in db:
-        if user["id"] == user_id:
-            return user
-    raise HTTPException(status_code=404, detail="Utente non trovato")
+    if admin_logged:
+        return {"msg": "Accesso admin", "utenti": db}
+
+    for u in db:
+        if u.get("check_login", False):
+            return {
+                "id": u["id"],
+                "name": u["name"],
+                "email": u["email"]
+            }
+
+    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.")
 
 @app.put("/users/{user_id}")
 def update_user(user_id: int, updated_user: User, auth: UserAuth):

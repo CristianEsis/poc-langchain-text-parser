@@ -13,5 +13,13 @@
         "id": 3,
         "email": "ciao@example.com",
         "name": "Pluto"
+    },
+    {
+        "id": 8,
+        "name": "paolo",
+        "email": "paolo@example.com",
+        "password": "12354",
+        "check_login": true,
+        "tentativi": 0
     }
 ]
