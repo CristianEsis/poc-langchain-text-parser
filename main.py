@@ -61,56 +61,35 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-def save_user_data(user_id: int, city_name: str, chat_history: InMemoryChatMessageHistory):
-    """
-    Salva le città (max 5) e aggiorna la chat history in JSON.
-    """
-    filename = f"user_{user_id}.json"
+def save_city(user_id: int, city_name: str):
+    """Salva città direttamente nel JSON principale degli utenti, max 5 città"""
+    db = read_db()
+    found = False
+    for u in db:
+        if u["id"] == user_id:
+            found = True
+            if "cities" not in u:
+                u["cities"] = []
+            
+            # Limita a massimo 5 città
+            if len(u["cities"]) >= 5:
+                u["cities"].pop(0)
+            
+            u["cities"].append(city_name)
+            break
 
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            cities = data.get("cities", [])
-            chat_data = data.get("chat_history", [])
-    except FileNotFoundError:
-        cities = []
-        chat_data = []
+    if not found:
+        raise HTTPException(status_code=404, detail="Utente non trovato")
+    
+    update_db(db)
 
-    if len(cities) >= 5:
-        cities.pop(0)
-    cities.append(city_name)
-
-    chat_history.add_user_message(city_name)
-
-    chat_data = [{"type": m.type, "content": m.content} for m in chat_history.messages]
-
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump({"cities": cities, "chat_history": chat_data}, f, ensure_ascii=False, indent=2)
-
-def load_user_data(user_id: int):
-    """
-    Carica le città e la chat history dell'utente.
-    Ritorna: lista città, InMemoryChatMessageHistory
-    """
-    filename = f"user_{user_id}.json"
-    chat_history = InMemoryChatMessageHistory()
-
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        cities = data.get("cities", [])
-        chat_data = data.get("chat_history", [])
-
-        for m in chat_data:
-            if m["type"] == "human":
-                chat_history.add_user_message(m["content"])
-            elif m["type"] == "ai":
-                chat_history.add_ai_message(m["content"])
-
-        return cities, chat_history
-
-    except FileNotFoundError:
-        return [], chat_history
+def load_cities(user_id: int) -> list:
+    """Carica le città dell'utente dal JSON principale"""
+    db = read_db()
+    for u in db:
+        if u["id"] == user_id:
+            return u.get("cities", [])
+    return []
 
 
 @app.post("/city/add")
@@ -118,35 +97,25 @@ def add_city(user: User):
     db = read_db()
     for u in db:
         if u.get("check_login", False) and u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
-            cities, chat_history = load_user_data(user.id)
-
-            save_user_data(user.id, user.city_name, chat_history)
-
-            cities, _ = load_user_data(user.id)
-
+            save_city(user.id, user.city_name)
+            cities = load_cities(user.id)
             return {
-                "message": f"Città '{user.city_name}' aggiunta per l'utente {u["name"]}",
-                "cities": cities
-            }
-        
-            
-    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}    
-    
-
-
-@app.get("/city/list")
-def list_of_city(user: User):
-    db = read_db()
-    
-    for u in db:
-        if u.get("check_login", False):
-            cities, _ = load_user_data(user.id)
-            return {
-                "message": f"Città dell'utente {u["name"]}",
+                "message": f"Città '{user.city_name}' aggiunta per l'utente {u['name']}",
                 "cities": cities
             }
     return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
 
+@app.get("/city/list")
+def list_of_city(user: User):
+    db = read_db()
+    for u in db:
+        if u.get("check_login", False) and u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
+            cities = load_cities(user.id)
+            return {
+                "message": f"Città dell'utente {u['name']}",
+                "cities": cities
+            }
+    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
 @app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
 def register_new_user(user: User):
     db = read_db()
