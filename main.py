@@ -210,9 +210,6 @@ def login_user(user: User):
 
 @app.get("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
 def read_user(auth: UserAuth):
-    """
-    Restituisce i dati dell'utente loggato tramite email e password.
-    """
     db = read_db()
     global admin_logged
 
