@@ -33,6 +33,21 @@ def update_db(db):
     with open('lista_utenti_LLM_meteo_cybercats.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, indent=4, ensure_ascii=False)
 
+def error_manager(message: str):
+    if message == "KeyError":
+        return("Errore di chiave: la chiave specificata non esiste nel dizionario.")
+    if message == "IndexError":
+        return("Errore di indice: l'indice specificato è fuori dai limiti della lista.")
+    if message == "ValueError":
+        return("Errore di valore: il valore fornito non è valido per l'operazione richiesta.")
+    if message == "TypeError":
+        return("Errore di tipo: il tipo di dato fornito non è quello atteso.")
+    if message == "JSONDecodeError":
+        return("Errore di decodifica JSON: il file JSON è malformato o non può essere letto correttamente.")
+    if message == "FileNotFoundError":
+        return("Errore di file non trovato: il file specificato non esiste.")
+    return f"Errore sconosciuto: {message}"
+
 class User(BaseModel):
     id: int | None = None
     name: str | None = None
@@ -55,41 +70,47 @@ app = FastAPI(
 
 @app.get("/")
 def read_root():
-    return {"message": "Benvenuto nella mia API 🚀"}
+    return {"message": "Benvenuto nella mia API 🚀, questa è la root. Per la documentazione relativa al programma, visita http://127.0.0.1:8000/docs"}
 
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
 
 def save_city(user_id: int, city_name: str):
-    """Salva città direttamente nel JSON principale degli utenti, max 5 città"""
-    db = read_db()
-    found = False
-    for u in db:
-        if u["id"] == user_id:
-            found = True
-            if "cities" not in u:
-                u["cities"] = []
-            
-            # Limita a massimo 5 città
-            if len(u["cities"]) >= 5:
-                u["cities"].pop(0)
-            
-            u["cities"].append(city_name)
-            break
+    try:
+        db = read_db()
+        found = False
+        for u in db:
+            if u["id"] == user_id:
+                found = True
+                if "cities" not in u:
+                    u["cities"] = []
+                
+                # Limita a massimo 5 città
+                if len(u["cities"]) >= 5:
+                    u["cities"].pop(0)
+                
+                u["cities"].append(city_name)
+                break
 
-    if not found:
-        raise HTTPException(status_code=404, detail="Utente non trovato")
+        if not found:
+            raise HTTPException(status_code = 404, detail = "Utente non trovato")
+    except Exception as e:
+        error_message = error_manager(str(e))
+        return error_message
     
     update_db(db)
 
 def load_cities(user_id: int) -> list:
-    """Carica le città dell'utente dal JSON principale"""
-    db = read_db()
-    for u in db:
-        if u["id"] == user_id:
-            return u.get("cities", [])
-    return []
+    try:
+        db = read_db()
+        for u in db:
+            if u["id"] == user_id:
+                return u.get("cities", [])
+        raise HTTPException(status_code = 404, detail = "Utente non trovato")
+    except Exception as e:
+        error_message = error_manager(str(e))
+        return error_message
 
 
 @app.post("/city/add")
@@ -116,28 +137,29 @@ def list_of_city(user: User):
                 "cities": cities
             }
     return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
-@app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
-def register_new_user(user: User):
-    db = read_db()
 
+@app.post("/user/register", summary = "Registra un nuovo utente", description = "Aggiungi un id, il tuo nome,email e password per registrare il tuo account", tags = ["Utenti"])
+def register_new_user(user: User):
     if user.tentativi != 0:
-        raise HTTPException(status_code=400, detail="Non puoi impostare il valore dei tentativi manualmente")
+        raise HTTPException(status_code = 400, detail = "Non puoi impostare il valore dei tentativi manualmente")
     if user.check_login is not False:
-        raise HTTPException(status_code=400, detail="Non puoi impostare il valore del login manualmente")
-    if not user.password:
-        raise HTTPException(status_code=400, detail="Password vuota")
+        raise HTTPException(status_code = 400, detail = "Non puoi impostare il valore del login manualmente")
     if not validation_email(user.email):
-        raise HTTPException(status_code=400, detail="Email non valida")
+        raise HTTPException(status_code = 400, detail = "Email non valida")
+    if not user.password:
+        raise HTTPException(status_code = 400, detail = "Password vuota")
+    
+    db = read_db()
 
     for u in db:
         if u["id"] == user.id:
-            raise HTTPException(status_code=400, detail="L'ID utente esiste già")
+            raise HTTPException(status_code = 400, detail = "L'ID utente esiste già")
 
     db.append(user.model_dump())
     update_db(db)
     return {"detail": "Utente registrato con successo", "utente": user.model_dump()}
 
-@app.post("/user/login",summary="Si accede all'account creato",description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
+@app.post("/user/login",summary="Si accede all'account creato", description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
 def login_user(user: User):
     global admin_logged
     db = read_db()
@@ -146,25 +168,29 @@ def login_user(user: User):
         admin_logged = True
         return {"msg": "Login admin effettuato con successo!"}
     
-    for u in db:
-        if u["email"] == user.email:
-            if u["tentativi"] >= 5:
-                raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
+    try:
+        for u in db:
+            if u["id"] == user.id and u["email"] == user.email:
+                if u["tentativi"] >= 5:
+                    raise HTTPException(status_code = 403, detail = "Troppi tentativi falliti, accesso bloccato")
 
-            if u["password"] == user.password:
-                u["check_login"] = True
-                u["tentativi"] = 0
+                if u["password"] == user.password:
+                    u["check_login"] = True
+                    u["tentativi"] = 0
+                    update_db(db)
+                    return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
+
+                u["tentativi"] += 1
+                remaining = 5 - u["tentativi"]
                 update_db(db)
-                return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
+            raise HTTPException(status_code = 401, detail = f"Credenziali errate. Tentativi rimasti: {remaining}")
+    except Exception as e:
+        error_message = error_manager(str(e))
+        return error_message
 
-            u["tentativi"] += 1
-            remaining = 5 - u["tentativi"]
-            update_db(db)
-            raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
+    raise HTTPException(status_code = 401, detail = "Email non registrata")
 
-    raise HTTPException(status_code=401, detail="Email non registrata")
-
-@app.get("/users", summary="Elenca le tue informazioni personali",tags=["Utenti"])
+@app.get("/users", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
 def read_users():
     db = read_db()
     global admin_logged
@@ -180,9 +206,9 @@ def read_users():
                 "email": u["email"]
             }
 
-    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.",tags=["Utenti"])
+    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.")
 
-@app.put("/users/{user_id}", summary="Aggiorna i tuoi dati",description="Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare",tags=["Utenti"])
+@app.put("/users/{user_id}", summary = "Aggiorna i tuoi dati", description = "Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare", tags = ["Utenti"])
 def update_user(user_id: int, auth: UserAuth, updated_user: User):
     db = read_db()
     for user in db:
@@ -202,19 +228,19 @@ def update_user(user_id: int, auth: UserAuth, updated_user: User):
             update_db(db)
             return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
 
-    raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
+    raise HTTPException(status_code = 404, detail=f"Utente con id {user_id} non trovato.")
 
-@app.delete("/users/{user_id}", summary="Cancella un tuo account",description="Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) per avviare la fase di cancellazione dell'acount",tags=["Utenti"])
+@app.delete("/users/{user_id}", summary = "Cancella un tuo account", description = "Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) per avviare la fase di cancellazione dell'acount", tags = ["Utenti"])
 def delete_user(user_id: int, auth: UserAuth):
     db = read_db()
     for user in db:
         if user["id"] == user_id:
             if user["email"] != auth.email or user["password"] != auth.password:
-                raise HTTPException(status_code=401, detail="Credenziali non valide per cancellazione")
+                raise HTTPException(status_code=401, detail = "Credenziali non valide per cancellazione")
             db.remove(user)
             update_db(db)
             return {"detail": f"Utente con id {user_id} cancellato con successo"}
-    raise HTTPException(status_code=404, detail="Utente non trovato")
+    raise HTTPException(status_code = 404, detail = "Utente non trovato")
 
 @app.post("/ask")
 def ask_domanda(payload: dict):
