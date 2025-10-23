@@ -257,18 +257,37 @@ def parse_weather_request(user_input: str, llm: BaseLanguageModel) -> Optional[W
         print(f"[DEBUG] Output LLM (Parsing):\n{llm_output}\n")
 
         # Parse l'output JSON usando JsonOutputParser
-        # Questo parser converte automaticamente il JSON in un oggetto Pydantic
-        parsed_request_obj = json_parser.parse(llm_output)
-        print(f"[DEBUG] Oggetto WeatherRequest Pydantic:\n{parsed_request_obj}\n")
+        # Questo restituisce un dizionario, NON un oggetto Pydantic
+        parsed_dict = json_parser.parse(llm_output)
+        print(f"[DEBUG] Dizionario parsato:\n{parsed_dict}\n")
 
         # Valida e aggiorna i campi 'valid' e 'missing_parameters'
-        # Questo viene fatto manualmente poiché non è parte dello schema JSON originale
         valid = True
         missing_params = []
-        if not parsed_request_obj.city:
+        
+        # Accedi al dizionario, non all'oggetto
+        if not parsed_dict.get("city"):
             valid = False
             missing_params.append("city")
 
+        # Aggiorna il dizionario
+        parsed_dict["valid"] = valid
+        parsed_dict["missing_parameters"] = missing_params
+        
+        # Crea l'oggetto WeatherRequest dal dizionario
+        updated_request_obj = WeatherRequest(**parsed_dict)
+        print(f"[DEBUG] Oggetto WeatherRequest Pydantic:\n{updated_request_obj}\n")
+
+        return updated_request_obj
+
+    except ValidationError as ve:
+        print(f"[ERROR] Errore di validazione Pydantic: {ve}")
+        return None
+    except Exception as e:
+        print(f"[ERROR] Errore durante il parsing: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
         # Crea una nuova istanza con i campi aggiornati
         # Usiamo .dict() per ottenere un dizionario, lo modifichiamo e lo ricreiamo
         parsed_dict = parsed_request_obj.dict()
