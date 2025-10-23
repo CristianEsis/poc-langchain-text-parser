@@ -13,6 +13,35 @@ ADMIN_EMAIL = "admin@cybercats.it"
 ADMIN_PASSWORD = "admin123"
 admin_logged = False 
 
+def save_city(user_id: int, city_name: str):
+    """Salva città direttamente nel JSON principale degli utenti, max 5 città"""
+    db = read_db()
+    found = False
+    for u in db:
+        if u["id"] == user_id:
+            found = True
+            if "cities" not in u:
+                u["cities"] = []
+            
+            if len(u["cities"]) >= 5:
+                u["cities"].pop(0)
+            
+            u["cities"].append(city_name)
+            break
+
+    if not found:
+        raise HTTPException(status_code=404, detail="Utente non trovato")
+    
+    update_db(db)
+
+def load_cities(user_id: int) -> list:
+    """Carica le città dell'utente dal JSON principale"""
+    db = read_db()
+    for u in db:
+        if u["id"] == user_id:
+            return u.get("cities", [])
+    return []
+
 def validation_email(email: str):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
@@ -61,35 +90,6 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-def save_city(user_id: int, city_name: str):
-    """Salva città direttamente nel JSON principale degli utenti, max 5 città"""
-    db = read_db()
-    found = False
-    for u in db:
-        if u["id"] == user_id:
-            found = True
-            if "cities" not in u:
-                u["cities"] = []
-            
-            if len(u["cities"]) >= 5:
-                u["cities"].pop(0)
-            
-            u["cities"].append(city_name)
-            break
-
-    if not found:
-        raise HTTPException(status_code=404, detail="Utente non trovato")
-    
-    update_db(db)
-
-def load_cities(user_id: int) -> list:
-    """Carica le città dell'utente dal JSON principale"""
-    db = read_db()
-    for u in db:
-        if u["id"] == user_id:
-            return u.get("cities", [])
-    return []
-
 
 @app.post("/city/add")
 def add_city(user: User):
@@ -115,6 +115,7 @@ def list_of_city(user: User):
                 "cities": cities
             }
     return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
+
 @app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
 def register_new_user(user: User):
     db = read_db()
