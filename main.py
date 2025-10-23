@@ -117,7 +117,7 @@ def load_user_data(user_id: int):
 def add_city(user: User):
     db = read_db()
     for u in db:
-        if u.get("check_login", False):
+        if u.get("check_login", False) and u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
             cities, chat_history = load_user_data(user.id)
 
             save_user_data(user.id, user.city_name, chat_history)
@@ -125,7 +125,7 @@ def add_city(user: User):
             cities, _ = load_user_data(user.id)
 
             return {
-                "message": f"Città '{user.city_name}' aggiunta per l'utente {user.name}",
+                "message": f"Città '{user.city_name}' aggiunta per l'utente {u["name"]}",
                 "cities": cities
             }
         
