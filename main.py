@@ -4,6 +4,8 @@ from typing import List
 import json
 from json.decoder import JSONDecodeError
 import re
+from pathlib import Path
+from langchain.memory import ChatMessageHistory
 from llm import question_answer
 
 ADMIN_EMAIL = "admin@cybercats.it"
@@ -36,7 +38,9 @@ class User(BaseModel):
     email: str | None = None
     password: str | None = None
     check_login: bool = False
-    tentativi: int = 0
+    tentativi: int = 0  
+    city_name: str | None = None
+    chat_history = ChatMessageHistory()
 
 class UserAuth(BaseModel):
     email: str
@@ -56,6 +60,41 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
+def save_user_city(user: User):
+    filename = f"user_{user.id}.json"
+    
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            cities = data.get("cities", [])
+    except FileNotFoundError:
+        cities = []
+
+    if len(cities) >= 5:
+        cities.pop(0)
+
+    cities.append(user.city_name)
+
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump({"cities": cities}, f, ensure_ascii=False, indent=2)
+
+def load_user_cities(user_id: int):
+    filename = f"user_{user_id}.json"
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data.get("cities", [])
+    except FileNotFoundError:
+        return []
+
+@app.post("/city/add")
+def add_city(user: User):
+    save_user_city(user)
+    current_cities = load_user_cities(user.id)
+    return {
+        "message": f"Città '{user.city_name}' aggiunta per l'utente {user.id}",
+        "current_cities": current_cities
+    }
 
 @app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
 def register_new_user(user: User):
