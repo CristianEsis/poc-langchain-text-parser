@@ -71,7 +71,6 @@ def save_city(user_id: int, city_name: str):
             if "cities" not in u:
                 u["cities"] = []
             
-            # Limita a massimo 5 città
             if len(u["cities"]) >= 5:
                 u["cities"].pop(0)
             
@@ -148,7 +147,7 @@ def login_user(user: User):
     
     for u in db:
         if u["email"] == user.email:
-            if u["tentativi"] >= 5:
+            if u["tentativi"] and u["tentativi"] >= 5:
                 raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
 
             if u["password"] == user.password:
@@ -164,8 +163,11 @@ def login_user(user: User):
 
     raise HTTPException(status_code=401, detail="Email non registrata")
 
-@app.get("/users", summary="Elenca le tue informazioni personali",tags=["Utenti"])
-def read_users():
+@app.get("/users", summary="Elenca le tue informazioni personali", tags=["Utenti"])
+def read_users(user: User):
+    """
+    Restituisce i dati dell'utente loggato tramite il suo user_id.
+    """
     db = read_db()
     global admin_logged
 
@@ -173,14 +175,19 @@ def read_users():
         return {"msg": "Accesso admin", "utenti": db}
 
     for u in db:
-        if u.get("check_login", False):
-            return {
-                "id": u["id"],
-                "name": u["name"],
-                "email": u["email"]
-            }
+        if u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
+            if u.get("check_login", False):
+                return {
+                    "id": u["id"],
+                    "name": u["name"],
+                    "email": u["email"],
+                    "cities": u.get("cities", [])
+                }
+            else:
+                raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")
 
-    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.",tags=["Utenti"])
+    raise HTTPException(status_code=404, detail="Utente non trovato")
+
 
 @app.put("/users/{user_id}", summary="Aggiorna i tuoi dati",description="Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare",tags=["Utenti"])
 def update_user(user_id: int, auth: UserAuth, updated_user: User):
