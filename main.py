@@ -5,13 +5,79 @@ import json
 from json.decoder import JSONDecodeError
 import re
 from pathlib import Path
-from langchain_core.chat_history import InMemoryChatMessageHistory
+#from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 from llm import question_answer
 from typing import ClassVar
 
 ADMIN_EMAIL = "admin@cybercats.it"
 ADMIN_PASSWORD = "admin123"
 admin_logged = False 
+
+class User(BaseModel):
+    id: int | None = None
+    name: str | None = None
+    email: str | None = None
+    password: str | None = None
+    check_login: bool = False
+    tentativi: int = 0  
+    #chat_history: ClassVar[InMemoryChatMessageHistory] = InMemoryChatMessageHistory() da rivedere
+
+class City(BaseModel):
+    city_name: str
+
+class UserAuth(BaseModel):
+    email: str
+    password: str
+
+
+def save_city(user_id: int, city: City):
+    try:
+        db = read_db()
+        found = False
+
+        for u in db:
+            if u["id"] == user_id:
+                found = True
+
+                if "cities" not in u or not isinstance(u["cities"], list):
+                    u["cities"] = []
+
+                existing_cities = [c.lower() for c in u["cities"]]
+                if city.city_name.lower() in existing_cities:
+                    raise HTTPException(
+                        status_code=400, 
+                        detail=f"La città '{city.city_name}' è già salvata per questo utente."
+                    )
+
+                if len(u["cities"]) >= 5:
+                    u["cities"].pop(0)
+
+                u["cities"].append(city.city_name)
+                break
+
+        if not found:
+            raise HTTPException(status_code=404, detail="Utente non trovato")
+
+        update_db(db)
+        return {"msg": f"Città '{city.city_name}' salvata correttamente per l'utente con id {user_id}"}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        return error_manager(str(e))
+
+def load_cities(user_id: int) -> list[str]:
+    try:
+        db = read_db()
+        for u in db:
+            if u["id"] == user_id:
+                return u.get("cities", [])
+        raise HTTPException(status_code=404, detail="Utente non trovato")
+    except HTTPException:
+        raise
+    except Exception as e:
+        return error_manager(str(e))
+
 
 def validation_email(email: str):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
@@ -34,33 +100,8 @@ def update_db(db):
         json.dump(db, f, indent=4, ensure_ascii=False)
 
 def error_manager(message: str):
-    if message == "KeyError":
-        return("Errore di chiave: la chiave specificata non esiste nel dizionario.")
-    if message == "IndexError":
-        return("Errore di indice: l'indice specificato è fuori dai limiti della lista.")
-    if message == "ValueError":
-        return("Errore di valore: il valore fornito non è valido per l'operazione richiesta.")
-    if message == "TypeError":
-        return("Errore di tipo: il tipo di dato fornito non è quello atteso.")
-    if message == "JSONDecodeError":
-        return("Errore di decodifica JSON: il file JSON è malformato o non può essere letto correttamente.")
-    if message == "FileNotFoundError":
-        return("Errore di file non trovato: il file specificato non esiste.")
-    return f"Errore sconosciuto: {message}"
+    raise HTTPException(status_code = 400, detail = f"ERRORE: {message}")
 
-class User(BaseModel):
-    id: int | None = None
-    name: str | None = None
-    email: str | None = None
-    password: str | None = None
-    check_login: bool = False
-    tentativi: int = 0  
-    city_name: str | None = None
-    chat_history: ClassVar[InMemoryChatMessageHistory] = InMemoryChatMessageHistory()
-
-class UserAuth(BaseModel):
-    email: str
-    password: str
 
 app = FastAPI(
     title="My FastAPI App",
@@ -76,67 +117,39 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-def save_city(user_id: int, city_name: str):
-    try:
-        db = read_db()
-        found = False
-        for u in db:
-            if u["id"] == user_id:
-                found = True
-                if "cities" not in u:
-                    u["cities"] = []
-                
-                # Limita a massimo 5 città
-                if len(u["cities"]) >= 5:
-                    u["cities"].pop(0)
-                
-                u["cities"].append(city_name)
-                break
-
-        if not found:
-            raise HTTPException(status_code = 404, detail = "Utente non trovato")
-    except Exception as e:
-        error_message = error_manager(str(e))
-        return error_message
-    
-    update_db(db)
-
-def load_cities(user_id: int) -> list:
-    try:
-        db = read_db()
-        for u in db:
-            if u["id"] == user_id:
-                return u.get("cities", [])
-        raise HTTPException(status_code = 404, detail = "Utente non trovato")
-    except Exception as e:
-        error_message = error_manager(str(e))
-        return error_message
-
-
-@app.post("/city/add")
-def add_city(user: User):
+@app.post("/city/add", summary = "Aggiungi le città di cui vuoi sapere le informazioni(max 5)", description="Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà l'ultima città aggiunta", tags=["Città"])
+def add_city(user_data: dict):
     db = read_db()
+    city_name = user_data.get("city_name")
+    user_id = user_data.get("id")
+    email = user_data.get("email")
+    password = user_data.get("password")
+
     for u in db:
-        if u.get("check_login", False) and u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
-            save_city(user.id, user.city_name)
-            cities = load_cities(user.id)
+        if u.get("check_login", False) and u["id"] == user_id and u["email"] == email and u["password"] == password:
+            city = City(city_name=city_name)
+            result = save_city(user_id, city)
+            cities = load_cities(user_id)
             return {
-                "message": f"Città '{user.city_name}' aggiunta per l'utente {u['name']}",
+                "message": result["msg"],
                 "cities": cities
             }
     return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
 
-@app.get("/city/list")
-def list_of_city(user: User):
+@app.get("/city/list",summary = "Ti elencherà le 5 città cercate", description="Questa funzionalità permette di elencarti le prime 5 città cercate", tags=["Città"])
+def list_of_city(auth: UserAuth):
     db = read_db()
     for u in db:
-        if u.get("check_login", False) and u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
-            cities = load_cities(user.id)
-            return {
-                "message": f"Città dell'utente {u['name']}",
-                "cities": cities
-            }
-    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
+        if u["email"] == auth.email and u["password"] == auth.password:
+            if u.get("check_login", False):
+                return {
+                    "message": f"Città salvate per l'utente {u['name']}",
+                    "cities": u.get("cities", [])
+                }
+            else:
+                raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")
+
+    raise HTTPException(status_code=404, detail="Utente non trovato")
 
 @app.post("/user/register", summary = "Registra un nuovo utente", description = "Aggiungi un id, il tuo nome,email e password per registrare il tuo account", tags = ["Utenti"])
 def register_new_user(user: User):
@@ -162,51 +175,64 @@ def register_new_user(user: User):
 @app.post("/user/login",summary="Si accede all'account creato", description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
 def login_user(user: User):
     global admin_logged
-    db = read_db()
 
-    if user.email == ADMIN_EMAIL and user.password == ADMIN_PASSWORD:
-        admin_logged = True
-        return {"msg": "Login admin effettuato con successo!"}
-    
     try:
+        db = read_db()
+
+        if user.email == ADMIN_EMAIL and user.password == ADMIN_PASSWORD:
+            admin_logged = True
+            return {"msg": "Login admin effettuato con successo!"}
+        
         for u in db:
             if u["id"] == user.id and u["email"] == user.email:
+                
                 if u["tentativi"] >= 5:
-                    raise HTTPException(status_code = 403, detail = "Troppi tentativi falliti, accesso bloccato")
+                    raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
 
                 if u["password"] == user.password:
                     u["check_login"] = True
                     u["tentativi"] = 0
                     update_db(db)
                     return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
-
+                
                 u["tentativi"] += 1
                 remaining = 5 - u["tentativi"]
                 update_db(db)
-            raise HTTPException(status_code = 401, detail = f"Credenziali errate. Tentativi rimasti: {remaining}")
+                raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
+
+        raise HTTPException(status_code=401, detail="Email o ID non registrati")
+
+    except HTTPException as http_err:
+        raise http_err
+
     except Exception as e:
-        error_message = error_manager(str(e))
-        return error_message
+        return error_manager(str(e))
 
-    raise HTTPException(status_code = 401, detail = "Email non registrata")
-
-@app.get("/users", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
-def read_users():
+@app.get("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
+def read_user(auth: UserAuth):
+    """
+    Restituisce i dati dell'utente loggato tramite email e password.
+    """
     db = read_db()
     global admin_logged
 
-    if admin_logged:
+    if auth.email == ADMIN_EMAIL and auth.password == ADMIN_PASSWORD:
+        admin_logged = True
         return {"msg": "Accesso admin", "utenti": db}
 
     for u in db:
-        if u.get("check_login", False):
-            return {
-                "id": u["id"],
-                "name": u["name"],
-                "email": u["email"]
-            }
+        if u["email"] == auth.email and u["password"] == auth.password:
+            if u.get("check_login", False):
+                return {
+                    "id": u["id"],
+                    "name": u["name"],
+                    "email": u["email"],
+                    "cities": u.get("cities", [])
+                }
+            else:
+                raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")
 
-    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.")
+    raise HTTPException(status_code=404, detail="Utente non trovato")
 
 @app.put("/users/{user_id}", summary = "Aggiorna i tuoi dati", description = "Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare", tags = ["Utenti"])
 def update_user(user_id: int, auth: UserAuth, updated_user: User):
