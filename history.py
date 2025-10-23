@@ -38,6 +38,7 @@ def aggiungi_cronologia(utente: User, domanda: str, risposta: str):
 
     with open(f"cronologia_utente_{utente.id}.json", "w", encoding="utf-8") as f:
         json.dump(cronologia, f, indent=4, ensure_ascii=False)
+        utente.cronologia = cronologia
 
 
         
