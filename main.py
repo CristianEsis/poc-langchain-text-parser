@@ -62,7 +62,7 @@ def health_check():
 
 def save_user_city(user: User):
     filename = f"user_{user.id}.json"
-    
+    user.chat_history
     try:
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
