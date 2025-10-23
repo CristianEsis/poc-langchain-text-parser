@@ -21,7 +21,7 @@ class WeatherAPI:
         self.OWM_GEO_URL = "http://api.openweathermap.org/geo/1.0/direct"
         self.OPEN_METEO_CURRENT_URL = "https://api.open-meteo.com/v1/forecast"
 
-    def get_coordinates(self, city_name):
+    def get_coordeinates(self, city_name):
         """
         Ottiene le coordinate (latitudine, longitudine) per un nome di città usando OpenWeatherMap.
 
