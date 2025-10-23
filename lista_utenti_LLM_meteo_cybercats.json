@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "email": "mario@example.com",
+        "name": "Mario Rossi"
+    },
+    {
+        "id": 2,
+        "email": "luigi@example.com",
+        "name": "Luigi Verdi"
+    },
+    {
+        "id": 3,
+        "email": "ciao@example.com",
+        "name": "Pluto"
+    },
+    {
+        "id": 8,
+        "name": "paolo",
+        "email": "paolo@example.com",
+        "password": "12354",
+        "check_login": true,
+        "tentativi": 0
+    }
+]
