@@ -5,8 +5,9 @@ import json
 from json.decoder import JSONDecodeError
 import re
 from pathlib import Path
-from langchain.memory import ChatMessageHistory
+from langchain_core.chat_history import InMemoryChatMessageHistory
 from llm import question_answer
+from typing import ClassVar
 
 ADMIN_EMAIL = "admin@cybercats.it"
 ADMIN_PASSWORD = "admin123"
@@ -40,7 +41,7 @@ class User(BaseModel):
     check_login: bool = False
     tentativi: int = 0  
     city_name: str | None = None
-    chat_history = ChatMessageHistory()
+    chat_history: ClassVar[InMemoryChatMessageHistory] = InMemoryChatMessageHistory()
 
 class UserAuth(BaseModel):
     email: str
@@ -60,41 +61,91 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-def save_user_city(user: User):
-    filename = f"user_{user.id}.json"
-    user.chat_history
+def save_user_data(user_id: int, city_name: str, chat_history: InMemoryChatMessageHistory):
+    """
+    Salva le città (max 5) e aggiorna la chat history in JSON.
+    """
+    filename = f"user_{user_id}.json"
+
     try:
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
             cities = data.get("cities", [])
+            chat_data = data.get("chat_history", [])
     except FileNotFoundError:
         cities = []
+        chat_data = []
 
     if len(cities) >= 5:
         cities.pop(0)
+    cities.append(city_name)
 
-    cities.append(user.city_name)
+    chat_history.add_user_message(city_name)
+
+    chat_data = [{"type": m.type, "content": m.content} for m in chat_history.messages]
 
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump({"cities": cities}, f, ensure_ascii=False, indent=2)
+        json.dump({"cities": cities, "chat_history": chat_data}, f, ensure_ascii=False, indent=2)
 
-def load_user_cities(user_id: int):
+def load_user_data(user_id: int):
+    """
+    Carica le città e la chat history dell'utente.
+    Ritorna: lista città, InMemoryChatMessageHistory
+    """
     filename = f"user_{user_id}.json"
+    chat_history = InMemoryChatMessageHistory()
+
     try:
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
-        return data.get("cities", [])
+        cities = data.get("cities", [])
+        chat_data = data.get("chat_history", [])
+
+        for m in chat_data:
+            if m["type"] == "human":
+                chat_history.add_user_message(m["content"])
+            elif m["type"] == "ai":
+                chat_history.add_ai_message(m["content"])
+
+        return cities, chat_history
+
     except FileNotFoundError:
-        return []
+        return [], chat_history
+
 
 @app.post("/city/add")
 def add_city(user: User):
-    save_user_city(user)
-    current_cities = load_user_cities(user.id)
-    return {
-        "message": f"Città '{user.city_name}' aggiunta per l'utente {user.id}",
-        "current_cities": current_cities
-    }
+    db = read_db()
+    for u in db:
+        if u.get("check_login", False):
+            cities, chat_history = load_user_data(user.id)
+
+            save_user_data(user.id, user.city_name, chat_history)
+
+            cities, _ = load_user_data(user.id)
+
+            return {
+                "message": f"Città '{user.city_name}' aggiunta per l'utente {user.name}",
+                "cities": cities
+            }
+        
+            
+    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}    
+    
+
+
+@app.get("/city/list")
+def list_of_city(user: User):
+    db = read_db()
+    
+    for u in db:
+        if u.get("check_login", False):
+            cities, _ = load_user_data(user.id)
+            return {
+                "message": f"Città dell'utente {u["name"]}",
+                "cities": cities
+            }
+    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
 
 @app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
 def register_new_user(user: User):
