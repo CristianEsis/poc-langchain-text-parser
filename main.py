@@ -57,7 +57,7 @@ def health_check():
     return {"status": "ok"}
 
 
-@app.post("/user/register")
+@app.post("/user/register", summary="Registra un nuovo utente",description="Aggiungi un id, il tuo nome,email e password per registrare il tuo account",tags=["Utenti"])
 def register_new_user(user: User):
     db = read_db()
 
@@ -78,7 +78,7 @@ def register_new_user(user: User):
     update_db(db)
     return {"detail": "Utente registrato con successo", "utente": user.model_dump()}
 
-@app.post("/user/login")
+@app.post("/user/login",summary="Si accede all'account creato",description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
 def login_user(user: User):
     global admin_logged
     db = read_db()
@@ -105,7 +105,7 @@ def login_user(user: User):
 
     raise HTTPException(status_code=401, detail="Email non registrata")
 
-@app.get("/users")
+@app.get("/users", summary="Elenca le tue informazioni personali",tags=["Utenti"])
 def read_users():
     db = read_db()
     global admin_logged
@@ -121,10 +121,10 @@ def read_users():
                 "email": u["email"]
             }
 
-    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.")
+    raise HTTPException(status_code=401, detail="Nessun utente loggato. Effettua il login prima di accedere ai dati.",tags=["Utenti"])
 
-@app.put("/users/{user_id}")
-def update_user(user_id: int, updated_user: User, auth: UserAuth):
+@app.put("/users/{user_id}", summary="Aggiorna i tuoi dati",description="Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare",tags=["Utenti"])
+def update_user(user_id: int, auth: UserAuth, updated_user: User):
     db = read_db()
     for user in db:
         if user["id"] == user_id:
@@ -145,7 +145,7 @@ def update_user(user_id: int, updated_user: User, auth: UserAuth):
 
     raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
 
-@app.delete("/users/{user_id}")
+@app.delete("/users/{user_id}", summary="Cancella un tuo account",description="Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) per avviare la fase di cancellazione dell'acount",tags=["Utenti"])
 def delete_user(user_id: int, auth: UserAuth):
     db = read_db()
     for user in db:
