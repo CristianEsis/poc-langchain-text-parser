@@ -46,7 +46,7 @@ def register_new_user(user: User):
     update_db(db)
     return {"detail": "Utente registrato con successo", "utente": user.model_dump()}
 
-@app.post("/user/login",summary="Si accede all'account creato", description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
+@app.post("/user/login",summary="Si accede all'account creato")
 def login_user(user: User):
     global admin_logged
 
@@ -56,31 +56,34 @@ def login_user(user: User):
         if user.email == ADMIN_EMAIL and user.password == ADMIN_PASSWORD:
             admin_logged = True
             return {"msg": "Login admin effettuato con successo!"}
-        
+
+        found_user = None
         for u in db:
-            if u["id"] == user.id and u["email"] == user.email and u["password"] == user.password:
-                
-                if u["tentativi"] >= 5:
-                    raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
+            if u["id"] == user.id or u["email"] == user.email:
+                found_user = u
+                break
 
-                if u["password"] == user.password:
-                    u["check_login"] = True
-                    u["tentativi"] = 0
-                    update_db(db)
-                    return {"msg": f"Login effettuato con successo! Benvenuto {u['name']}"}
-                
-                u["tentativi"] += 1
-                remaining = 5 - u["tentativi"]
-                update_db(db)
-                raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
+        if not found_user:
+            raise HTTPException(status_code=404, detail="Email o ID non registrati")
 
-        raise HTTPException(status_code=401, detail="Email o ID non registrati")
+        if found_user.get("tentativi", 0) >= 5:
+            raise HTTPException(status_code=403, detail="Troppi tentativi falliti, accesso bloccato")
+
+        if found_user["password"] == user.password:
+            found_user["check_login"] = True
+            found_user["tentativi"] = 0
+            update_db(db)
+            return {"msg": f"Login effettuato con successo! Benvenuto {found_user['name']}"}
+        else:
+            found_user["tentativi"] = found_user.get("tentativi", 0) + 1
+            remaining = 5 - found_user["tentativi"]
+            update_db(db)
+            raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
 
     except HTTPException as http_err:
         raise http_err
-
     except Exception as e:
-        return error_manager(str(e))
+        return error_manager(e)
 
 @app.get("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
 def read_user(auth: UserAuth):
@@ -140,7 +143,7 @@ def delete_user(user_id: int, auth: UserAuth):
     raise HTTPException(status_code = 404, detail = "Utente non trovato")
 
 
-@app.post("/city/add", summary = "Aggiungi le città di cui vuoi sapere le informazioni(max 5)", description="Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà l'ultima città aggiunta", tags=["Città"])
+@app.post("/city/add", summary = "Aggiungi le città di cui vuoi sapere le informazioni(max 5)", description="Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà l'ultima città aggiunta\n{'email': 'la tua email' 'password': 'la tua password' 'city_name': 'la città che vuoi aggiungere' RICORDATI DI ESSERE LOGGATO}", tags=["Città"])
 def add_city(user_data: dict):
     db = read_db()
     city_name = user_data.get("city_name")
