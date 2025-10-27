@@ -58,11 +58,17 @@ def delete_user_retrieve(user_id: int,  auth: UserAuth):
 
 @app.post("/city/add", summary = "Aggiungi le città di cui vuoi sapere le informazioni(max 5)", description="Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà l'ultima città aggiunta\n{'email': 'la tua email' 'password': 'la tua password' 'city_name': 'la città che vuoi aggiungere'}\n RICORDATI DI ESSERE LOGGATO", tags=["Città"])
 def add_city_retrieve(user_data: dict):
-    return add_city(user_data)
+    try:
+        return add_city(user_data)
+    except Exception as e:
+        return error_manager(e)
 
 @app.get("/city/list",summary = "Ti elencherà le 5 città cercate", description="Questa funzionalità permette di elencarti le prime 5 città cercate", tags=["Città"])
 def list_of_city_retrieve(auth: UserAuth):
-    return list_of_city(auth)
+    try:
+        return list_of_city(auth)
+    except Exception as e:
+        return error_manager(e)
 
 @app.post("/ask")
 def ask_domanda(payload: dict):
