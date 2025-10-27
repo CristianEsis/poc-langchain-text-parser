@@ -1,7 +1,8 @@
-from Models_Manager.models import City
+from Models_Manager.models import City, UserAuth
 from fastapi import HTTPException
 from Management_Functions.Managment_functions import error_manager
 from DatabaseJSON.database import read_db,update_db
+
 def save_city(user_id: int, city: City):
     try:
         db = read_db()
@@ -49,3 +50,35 @@ def load_cities(user_id: int) -> list[str]:
         raise
     except Exception as e:
         return error_manager(str(e))
+
+def add_city(user_data: dict):
+    db = read_db()
+    city_name = user_data.get("city_name")
+    user_id = user_data.get("id")
+    email = user_data.get("email")
+    password = user_data.get("password")
+
+    for u in db:
+        if u.get("check_login", False) and u["id"] == user_id and u["email"] == email and u["password"] == password:
+            city = City(city_name=city_name)
+            result = save_city(user_id, city)
+            cities = load_cities(user_id)
+            return {
+                "message": result["msg"],
+                "cities": cities
+            }
+    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
+
+def list_of_city(auth: UserAuth):
+    db = read_db()
+    for u in db:
+        if u["email"] == auth.email and u["password"] == auth.password:
+            if u.get("check_login", False):
+                return {
+                    "message": f"Città salvate per l'utente {u['name']}",
+                    "cities": u.get("cities", [])
+                }
+            else:
+                raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")
+
+    raise HTTPException(status_code=404, detail="Utente non trovato")
