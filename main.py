@@ -46,7 +46,7 @@ def register_new_user(user: User):
     update_db(db)
     return {"detail": "Utente registrato con successo", "utente": user.model_dump()}
 
-@app.post("/user/login",summary="Si accede all'account creato")
+@app.post("/user/login",summary="Si accede all'account creato", description="Aggiungi email e password per accedere all'account", tags=["Utenti"])
 def login_user(user: User):
     global admin_logged
 
