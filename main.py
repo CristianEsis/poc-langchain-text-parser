@@ -59,7 +59,7 @@ def login_user(user: User):
 
         found_user = None
         for u in db:
-            if u["id"] == user.id or u["email"] == user.email:
+            if u["id"] == user.id and u["email"] == user.email:
                 found_user = u
                 break
 
@@ -85,7 +85,7 @@ def login_user(user: User):
     except Exception as e:
         return error_manager(e)
 
-@app.get("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
+@app.post("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
 def read_user(auth: UserAuth):
     db = read_db()
     global admin_logged
