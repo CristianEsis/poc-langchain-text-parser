@@ -3,8 +3,8 @@ from pydantic import BaseModel, Field
 
 class DateRange(BaseModel):
     """Modello per l'intervallo di date"""
-    from_date: Optional[str] = Field(None, description="Data di inizio intervallo in formato YYYY-MM-DD")
-    to: Optional[str] = Field(None, description="Data di fine intervallo in formato YYYY-MM-DD")
+    from_date: str = Field(description="Data di inizio dell'intervallo in formato YYYY-MM-DD")
+    to: str = Field(description="Data di fine dell'intervallo in formato YYYY-MM-DD")
 
 class WeatherRequest(BaseModel):
     """Modello per la richiesta meteo parsata"""

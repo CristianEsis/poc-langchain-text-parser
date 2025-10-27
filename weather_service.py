@@ -86,10 +86,9 @@ class WeatherService:
             print(f"Metriche richieste: {parsed_request.metrics}")
         
         if parsed_request.date_range:
-            from_d = getattr(parsed_request.date_range, "from_date", None)
-            to_d = getattr(parsed_request.date_range, "to", None)
-            print(f"Intervallo date: dal {from_d or 'N/A'} al {to_d or 'N/A'}")
-
+            print(f"Intervallo date: dal {parsed_request.date_range.from_date} "
+                  f"al {parsed_request.date_range.to}")
+    
     def _save_data(self, city: str, api_data: dict):
         """Salva i dati API in un file JSON"""
         filename = f"weather_data_{city}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"

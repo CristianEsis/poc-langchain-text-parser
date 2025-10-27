@@ -71,4 +71,3 @@ Formatta questi dati in una risposta completa, scorrevole e in linguaggio natura
                 f"Mi dispiace, sono riuscito a recuperare i dati per {parsed_request.city}, "
                 f"ma non sono riuscito a formularli in linguaggio naturale a causa di un errore interno."
             )
-        

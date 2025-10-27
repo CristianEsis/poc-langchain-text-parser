@@ -9,72 +9,149 @@ from models import WeatherRequest
 
 class WeatherRequestParser:
     """Parser per richieste meteo in linguaggio naturale usando LLM"""
-
+    
     def __init__(self, llm: BaseLanguageModel):
         self.llm = llm
         self.json_parser = JsonOutputParser(pydantic_object=WeatherRequest)
         self.prompt = self._create_prompt()
-
+    
     def _create_prompt(self) -> PromptTemplate:
         """Crea il prompt template per il parsing"""
         template = """
 Sei un esperto assistente per richieste meteorologiche. Il tuo compito è estrarre informazioni strutturate da una richiesta di testo in linguaggio naturale.
 
-Analizza attentamente la richiesta fornita e identifica:
-- La citta' richiesta (city). Deve essere una stringa.
-- Le metriche meteorologiche specificate (metrics), ad esempio temperatura, umidita', pressione, velocita' del vento, qualita' dell'aria. Questo campo deve essere una **lista di stringhe** (es. ["temperature", "humidity"]).
-- L'intervallo di date richiesto (date_range), se specificato, in formato ISO 8601 (YYYY-MM-DD). Questo campo deve essere un **oggetto con due chiavi**: "from_date" e "to" (es. {"from_date": "2023-04-01", "to": "2023-04-02"}).
+SCHEMA JSON RICHIESTO:
+{{
+    "city": "nome_citta",
+    "metrics": ["temperature", "humidity", "pressure", "wind_speed", "air_quality"],
+    "date_range": {{"from_date": "YYYY-MM-DD", "to": "YYYY-MM-DD"}} oppure null,
+    "valid": true,
+    "missing_parameters": []
+}}
 
-Se un elemento non e' esplicitamente menzionato, imposta il campo appropriato a null o a un valore di default ragionevole.
+REGOLE IMPORTANTI:
+- "city": stringa con il nome della città (obbligatorio)
+- "metrics": SEMPRE una lista di stringhe, anche se una sola metrica. Valori possibili: "temperature", "humidity", "pressure", "wind_speed", "air_quality"
+- "date_range": se specificato, deve essere un oggetto con "from_date" e "to", altrimenti null
+- Se non ci sono metriche specificate, usa: ["temperature"]
+- Se non c'è intervallo di date, usa: null
 
+ESEMPI:
+
+Richiesta: "Che tempo fa a Roma?"
+Risposta:
+{{
+    "city": "Roma",
+    "metrics": ["temperature"],
+    "date_range": null,
+    "valid": true,
+    "missing_parameters": []
+}}
+
+Richiesta: "Dimmi temperatura e umidità a Milano"
+Risposta:
+{{
+    "city": "Milano",
+    "metrics": ["temperature", "humidity"],
+    "date_range": null,
+    "valid": true,
+    "missing_parameters": []
+}}
+
+Richiesta: "Vorrei i dati meteo di Napoli dal 1 marzo al 31 marzo 2023"
+Risposta:
+{{
+    "city": "Napoli",
+    "metrics": ["temperature"],
+    "date_range": {{"from_date": "2023-03-01", "to": "2023-03-31"}},
+    "valid": true,
+    "missing_parameters": []
+}}
+
+Richiesta: "Qualità dell'aria e vento a Torino"
+Risposta:
+{{
+    "city": "Torino",
+    "metrics": ["air_quality", "wind_speed"],
+    "date_range": null,
+    "valid": true,
+    "missing_parameters": []
+}}
+
+ORA ANALIZZA QUESTA RICHIESTA:
 Richiesta utente: {user_request}
 
-Risposta (solo il JSON, senza altri testi o Markdown, seguendo rigorosamente lo schema definito):
-{
-  "city": "Nome della città",
-  "metrics": ["metrica1", "metrica2"],
-  "date_range": {
-    "from_date": "YYYY-MM-DD",
-    "to": "YYYY-MM-DD"
-  },
-  "valid": true,
-  "missing_parameters": []
-}
+Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
 """
         return PromptTemplate(
             template=template,
             input_variables=["user_request"]
         )
-
+    
     def parse(self, user_input: str) -> Optional[WeatherRequest]:
         """
         Parse una richiesta utente in linguaggio naturale
-
+        
         Args:
             user_input: La richiesta dell'utente in testo libero
-
+            
         Returns:
             Un oggetto WeatherRequest o None in caso di errore
         """
         try:
             # Formatta il prompt
-            print(user_input)
-            
-            final_prompt = self.prompt.format_prompt(user_request=user_input)
+            final_prompt = self.prompt.format(user_request=user_input)
             print(f"[DEBUG] Prompt inviato all'LLM (Parsing):\n{final_prompt}\n")
+
             # Invoca l'LLM
             messages = [HumanMessage(content=final_prompt)]
             llm_output = self.llm.invoke(messages).content
-            print(f"[DEBUG] Output LLM (Parsing):\n{llm_output}\n") # Questa stampa mostra cosa risponde l'LLM
+            print(f"[DEBUG] Output LLM (Parsing):\n{llm_output}\n")
 
             # Parse l'output JSON
             parsed_dict = self.json_parser.parse(llm_output)
             print(f"[DEBUG] Dizionario parsato:\n{parsed_dict}\n")
 
+            # VALIDAZIONE E CORREZIONE DEI TIPI
+            # 1. Assicurati che metrics sia una lista
+            if "metrics" in parsed_dict:
+                if isinstance(parsed_dict["metrics"], dict):
+                    # Se l'LLM ha restituito un dizionario, converti in lista
+                    parsed_dict["metrics"] = list(parsed_dict["metrics"].keys())
+                elif isinstance(parsed_dict["metrics"], str):
+                    # Se è una stringa, mettila in una lista
+                    parsed_dict["metrics"] = [parsed_dict["metrics"]]
+                elif not isinstance(parsed_dict["metrics"], list):
+                    # Fallback
+                    parsed_dict["metrics"] = ["temperature"]
+            else:
+                parsed_dict["metrics"] = ["temperature"]
+            
+            # 2. Gestisci date_range
+            if "date_range" in parsed_dict and parsed_dict["date_range"] is not None:
+                if isinstance(parsed_dict["date_range"], str):
+                    # Se è una stringa tipo "2023-03-01-2023-03-31", parsala
+                    date_str = parsed_dict["date_range"]
+                    if "-" in date_str:
+                        parts = date_str.split("-")
+                        if len(parts) >= 6:  # YYYY-MM-DD-YYYY-MM-DD
+                            from_date = f"{parts[0]}-{parts[1]}-{parts[2]}"
+                            to_date = f"{parts[3]}-{parts[4]}-{parts[5]}"
+                            parsed_dict["date_range"] = {
+                                "from_date": from_date,
+                                "to": to_date
+                            }
+                        else:
+                            parsed_dict["date_range"] = None
+                    else:
+                        parsed_dict["date_range"] = None
+                elif not isinstance(parsed_dict["date_range"], dict):
+                    parsed_dict["date_range"] = None
+
             # Valida e aggiorna i campi
             valid = True
             missing_params = []
-
+            
             if not parsed_dict.get("city"):
                 valid = False
                 missing_params.append("city")
@@ -82,7 +159,7 @@ Risposta (solo il JSON, senza altri testi o Markdown, seguendo rigorosamente lo 
             # Aggiorna il dizionario
             parsed_dict["valid"] = valid
             parsed_dict["missing_parameters"] = missing_params
-
+            
             # Crea l'oggetto WeatherRequest dal dizionario
             weather_request = WeatherRequest(**parsed_dict)
             print(f"[DEBUG] Oggetto WeatherRequest Pydantic:\n{weather_request}\n")
