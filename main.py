@@ -4,7 +4,7 @@ from Models_Manager.models import User,City,UserAuth
 from CitiesManager.Cities import save_city,load_cities
 from DatabaseJSON.database import read_db,update_db
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
-#from llm import question_answer
+from llm import question_answer
 
 ADMIN_EMAIL = "admin@cybercats.it"
 ADMIN_PASSWORD = "admin123"
@@ -179,5 +179,5 @@ def ask_domanda(payload: dict):
     domanda = payload.get("domanda", "")
     if not domanda:
         return {"error": "Nessuna domanda fornita"}
-   # risposta = question_answer(domanda)
-   #return {"domanda": domanda, "risposta": risposta}
+    risposta = question_answer(domanda)
+    return {"domanda": domanda, "risposta": risposta}
