@@ -111,24 +111,30 @@ def read_user(auth: UserAuth):
 @app.put("/users/{user_id}", summary = "Aggiorna i tuoi dati", description = "Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) e poi inserire le informazioni da aggiornare", tags = ["Utenti"])
 def update_user(user_id: int, auth: UserAuth, updated_user: User):
     db = read_db()
+
+    found_user = None
     for user in db:
         if user["id"] == user_id:
-            if user["email"] != auth.email or user["password"] != auth.password:
-                raise HTTPException(status_code=401, detail="Credenziali non valide per aggiornamento")
-            updated_data = updated_user.model_dump(exclude_unset=True)
+            found_user = user
+            break
 
-            if "email" in updated_data:
-                if not validation_email(updated_data["email"]):
-                    raise HTTPException(status_code=400, detail="Nuova email non valida")
+    if not found_user:
+        raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
 
-            if "check_login" in updated_data or "tentativi" in updated_data:
-                raise HTTPException(status_code=400, detail="Non puoi modificare manualmente questi campi")
+    if found_user["email"] != auth.email or found_user["password"] != auth.password:
+        raise HTTPException(status_code=401, detail="Credenziali non valide per aggiornamento")
 
-            user.update(updated_data)
-            update_db(db)
-            return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": user}
+    updated_data = updated_user.model_dump(exclude_unset=True)
 
-    raise HTTPException(status_code = 404, detail=f"Utente con id {user_id} non trovato.")
+    if "email" in updated_data and not validation_email(updated_data["email"]):
+        raise HTTPException(status_code=400, detail="Nuova email non valida")
+
+    if "check_login" in updated_data or "tentativi" in updated_data:
+        raise HTTPException(status_code=400, detail="Non puoi modificare manualmente questi campi")
+
+    found_user.update(updated_data)
+    update_db(db)
+    return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": found_user}
 
 @app.delete("/users/{user_id}", summary = "Cancella un tuo account", description = "Inserisci l'id e i tuoi dati(email e password per confermare che sia tu) per avviare la fase di cancellazione dell'acount", tags = ["Utenti"])
 def delete_user(user_id: int, auth: UserAuth):
