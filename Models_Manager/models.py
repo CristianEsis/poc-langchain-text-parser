@@ -1,6 +1,11 @@
 from pydantic import BaseModel
 #from typing import ClassVar
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
+
+ADMIN_EMAIL = "admin@cybercats.it"
+ADMIN_PASSWORD = "admin123"
+admin_logged = False 
+
 class User(BaseModel):
     id: int | None = None
     name: str | None = None
