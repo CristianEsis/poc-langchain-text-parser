@@ -28,7 +28,7 @@ class WeatherAPI:
         :param city_name: Nome della città.
         :return: Tupla (lat, lon) o (None, None) se non trovata.
         """
-        params = {
+        params   = {
             'q': city_name,
             'limit': 1,
             'appid': self.OPENWEATHER_API_KEY
