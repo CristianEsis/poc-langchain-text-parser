@@ -114,12 +114,14 @@ def update_user(user_id: int, auth: UserAuth, updated_user: User):
 
     found_user = None
     for user in db:
-        if user["id"] == user_id:
+        if user["id"] == user_id and user["email"] == updated_user.email:
             found_user = user
             break
 
+ 
+
     if not found_user:
-        raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato.")
+        raise HTTPException(status_code=404, detail=f"Utente con id {user_id} non trovato oppure email errata.")
 
     if found_user["email"] != auth.email or found_user["password"] != auth.password:
         raise HTTPException(status_code=401, detail="Credenziali non valide per aggiornamento")
@@ -129,8 +131,12 @@ def update_user(user_id: int, auth: UserAuth, updated_user: User):
     if "email" in updated_data and not validation_email(updated_data["email"]):
         raise HTTPException(status_code=400, detail="Nuova email non valida")
 
+    for user in db:
+        if user["id"] == updated_data["id"]:
+            raise HTTPException(status_code=400, detail="ID già esistente")
+
     if "check_login" in updated_data or "tentativi" in updated_data:
-        raise HTTPException(status_code=400, detail="Non puoi modificare manualmente questi campi")
+        raise HTTPException(status_code=400, detail="Non puoi modificare manualmente questi campi(tentativi o check_login)")
 
     found_user.update(updated_data)
     update_db(db)
