@@ -288,7 +288,6 @@ def parse_weather_request(user_input: str, llm: BaseLanguageModel) -> Optional[W
         import traceback
         traceback.print_exc()
         return None
-
         # Crea una nuova istanza con i campi aggiornati
         # Usiamo .dict() per ottenere un dizionario, lo modifichiamo e lo ricreiamo
         parsed_dict = parsed_request_obj.dict()
