@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from Management_Functions.Managment_functions import error_manager
-from Models_Manager.models_esteso import User, UserAuth
-from User_Management.login import login_user, register_new_user
+from Models_Manager.models import User, UserAuth
+from User_Management.login import login_user, register_new_user,logout_user
 from User_Management.manage_data import read_user, update_user, delete_user
-from CitiesManager.Cities_esteso import add_city, list_of_city
+from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 from llm import question_answer
 
@@ -34,7 +34,14 @@ def login_user_retrive(user: User):
         return login_user(user)
     except Exception as e:
         return error_manager(e)
-
+    
+@app.post("/user/logout", summary="Logout utente", description="Chiude la sessione dell'utente loggato e resetta lo stato", tags=["Utenti"])
+def logout_user(auth: UserAuth):
+    try:    
+        return logout_user(auth)
+    except Exception as e:
+        return error_manager(e)
+    
 @app.post("/user", summary = "Elenca le tue informazioni personali", tags = ["Utenti"])
 def read_user_retrieve(auth: UserAuth):
     try:

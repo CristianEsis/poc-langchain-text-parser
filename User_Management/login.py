@@ -1,4 +1,4 @@
-from Models_Manager.models_esteso import User, UserAuth, ADMIN_EMAIL, ADMIN_PASSWORD, admin_logged
+from Models_Manager.models import User, UserAuth ,ADMIN_EMAIL, ADMIN_PASSWORD, admin_logged
 from fastapi import HTTPException
 from DatabaseJSON.database import read_db,update_db
 from Management_Functions.Managment_functions import validation_email
@@ -55,4 +55,12 @@ def login_user(user: User):
         update_db(db)
         raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
 
-
+def logout_user(auth: UserAuth):
+    db = read_db()
+    for u in db:
+        if u["email"] == auth.email and u["password"] == auth.password:
+            u["check_login"] = False
+            u["tentativi"] = 5
+            update_db(db)
+            return {"msg": f"Logout effettuato per {u['name']}"}
+    raise HTTPException(status_code=404, detail="Utente non trovato")

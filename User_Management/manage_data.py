@@ -1,4 +1,4 @@
-from Models_Manager.models_esteso import User, UserAuth, ADMIN_EMAIL, ADMIN_PASSWORD, admin_logged
+from Models_Manager.models import User, UserAuth, ADMIN_EMAIL, ADMIN_PASSWORD, admin_logged
 from fastapi import HTTPException
 from DatabaseJSON.database import read_db,update_db
 from Management_Functions.Managment_functions import  validation_email
@@ -55,7 +55,7 @@ def update_user(user_id: int, auth: UserAuth, updated_user: User):
 
     found_user.update(updated_data)
     update_db(db)
-    return {"msg": f"Utente con id {user_id} aggiornato con successo!", "user": found_user}
+    return {"msg": f"Utente con id {user_id}({updated_user['name']}) aggiornato con successo!", "user": found_user}
 
 def delete_user(user_id: int, auth: UserAuth):
     db = read_db()
@@ -65,5 +65,5 @@ def delete_user(user_id: int, auth: UserAuth):
                 raise HTTPException(status_code=401, detail = "Credenziali non valide per cancellazione")
             db.remove(user)
             update_db(db)
-            return {"detail": f"Utente con id {user_id} cancellato con successo"}
+            return {"detail": f"Utente con id {user_id}({user['name']}) cancellato con successo"}
     raise HTTPException(status_code = 404, detail = "Utente non trovato")
