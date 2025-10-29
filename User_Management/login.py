@@ -55,7 +55,7 @@ def login_user(user: User):
         update_db(db)
         raise HTTPException(status_code=401, detail=f"Credenziali errate. Tentativi rimasti: {remaining}")
 
-def logout_user(auth: UserAuth):
+def perform_logout(auth: UserAuth):
     db = read_db()
     for u in db:
         if u["email"] == auth.email and u["password"] == auth.password:
