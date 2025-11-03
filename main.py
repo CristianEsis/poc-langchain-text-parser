@@ -6,8 +6,6 @@ from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 from llm import question_answer
-from langchain_ollama import ChatOllama
-from weather_service import WeatherService
 
 app = FastAPI(
     title="My FastAPI App",
@@ -85,54 +83,4 @@ def ask_domanda(payload: dict):
     if not domanda:
         return {"error": "Nessuna domanda fornita"}
     risposta = question_answer(domanda)
-<<<<<<< HEAD
     return {"domanda": domanda, "risposta": risposta}
-
-
-def main():
-    """Funzione principale dell'applicazione"""
-    
-    # Configurazione
-    API_KEY = '2300cb7362ef7560c3e75c5b6aa48b2c'  # Inserisci la tua chiave API qui
-    
-    # Inizializza il modello LLM
-    print("Inizializzazione del modello LLM...")
-    llm = ChatOllama(model="gemma:2b", temperature=0.1)
-    
-    # Inizializza il servizio meteo
-    print("Inizializzazione del servizio meteo...\n")
-    weather_service = WeatherService(API_KEY, llm)
-    
-    # Loop principale
-    print("=== ASSISTENTE METEO ===")
-    print("Scrivi 'esci' per terminare\n")
-    
-    while True:
-        # Richiedi input all'utente
-        user_input = input("Inserisci la tua richiesta meteo: ").strip()
-        
-        # Controlla se l'utente vuole uscire
-        if user_input.lower() in ['esci', 'exit', 'quit', 'q']:
-            print("Arrivederci!")
-            break
-        
-        if not user_input:
-            print("Per favore, inserisci una richiesta valida.\n")
-            continue
-        
-        # Processa la richiesta
-        try:
-            response = weather_service.process_request(user_input)
-            print("\n" + "="*60)
-            print("RISPOSTA:")
-            print("="*60)
-            print(response)
-            print("="*60 + "\n")
-        except Exception as e:
-            print(f"\n[ERRORE] Si è verificato un errore: {e}\n")
-
-if __name__ == "__main__":
-    main()
-=======
-    return {"domanda": domanda, "risposta": risposta}
->>>>>>> e160e018e910850801baf2f202b10e505afa9599
