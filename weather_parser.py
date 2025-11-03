@@ -90,47 +90,47 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
     
     def parse(self, user_input: str) -> Optional[WeatherRequest]:
         """
-        Parse una richiesta utente in linguaggio naturale
+    Parse una richiesta utente in linguaggio naturale
+    
+    Args:
+        user_input: La richiesta dell'utente in testo libero
         
-        Args:
-            user_input: La richiesta dell'utente in testo libero
-            
-        Returns:
-            Un oggetto WeatherRequest o None in caso di errore
+    Returns:
+        Un oggetto WeatherRequest o None in caso di errore
         """
         try:
-            # Formatta il prompt
+        # Formatta il prompt
             final_prompt = self.prompt.format(user_request=user_input)
             print(f"[DEBUG] Prompt inviato all'LLM (Parsing):\n{final_prompt}\n")
 
-            # Invoca l'LLM
+        # Invoca l'LLM
             messages = [HumanMessage(content=final_prompt)]
             llm_output = self.llm.invoke(messages).content
             print(f"[DEBUG] Output LLM (Parsing):\n{llm_output}\n")
 
-            # Parse l'output JSON
+        # Parse l'output JSON
             parsed_dict = self.json_parser.parse(llm_output)
             print(f"[DEBUG] Dizionario parsato:\n{parsed_dict}\n")
 
-            # VALIDAZIONE E CORREZIONE DEI TIPI
-            # 1. Assicurati che metrics sia una lista
+        # VALIDAZIONE E CORREZIONE DEI TIPI
+        # 1. Assicurati che metrics sia una lista
             if "metrics" in parsed_dict:
                 if isinstance(parsed_dict["metrics"], dict):
-                    # Se l'LLM ha restituito un dizionario, converti in lista
+                # Se l'LLM ha restituito un dizionario, converti in lista
                     parsed_dict["metrics"] = list(parsed_dict["metrics"].keys())
                 elif isinstance(parsed_dict["metrics"], str):
-                    # Se è una stringa, mettila in una lista
+                # Se è una stringa, mettila in una lista
                     parsed_dict["metrics"] = [parsed_dict["metrics"]]
                 elif not isinstance(parsed_dict["metrics"], list):
-                    # Fallback
+                # Fallback
                     parsed_dict["metrics"] = ["temperature"]
             else:
                 parsed_dict["metrics"] = ["temperature"]
-            
-            # 2. Gestisci date_range
+        
+        # 2. Gestisci date_range
             if "date_range" in parsed_dict and parsed_dict["date_range"] is not None:
                 if isinstance(parsed_dict["date_range"], str):
-                    # Se è una stringa tipo "2023-03-01-2023-03-31", parsala
+                # Se è una stringa tipo "2023-03-01-2023-03-31", parsala
                     date_str = parsed_dict["date_range"]
                     if "-" in date_str:
                         parts = date_str.split("-")
@@ -138,9 +138,9 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
                             from_date = f"{parts[0]}-{parts[1]}-{parts[2]}"
                             to_date = f"{parts[3]}-{parts[4]}-{parts[5]}"
                             parsed_dict["date_range"] = {
-                                "from_date": from_date,
-                                "to": to_date
-                            }
+                            "from_date": from_date,
+                            "to": to_date
+                        }
                         else:
                             parsed_dict["date_range"] = None
                     else:
@@ -148,19 +148,47 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
                 elif not isinstance(parsed_dict["date_range"], dict):
                     parsed_dict["date_range"] = None
 
-            # Valida e aggiorna i campi
-            valid = True
-            missing_params = []
+        # 3. Valida e correggi la città
+            if parsed_dict.get("valid", True) and "city" in parsed_dict:
+                city = parsed_dict["city"]
+                user_input_lower = user_input.lower()
             
-            if not parsed_dict.get("city"):
-                valid = False
-                missing_params.append("city")
+            # Verifica se la città estratta è effettivamente menzionata nella richiesta
+                if not city or city.lower() not in user_input_lower:
+                # Cerca di estrarre la città usando parole chiave comuni
+                    city_keywords = ["a", "in", "di", "presso", "a:", "in:", "città di"]
+                    for keyword in city_keywords:
+                        if keyword in user_input_lower:
+                            parts = user_input_lower.split(keyword)
+                            if len(parts) > 1:
+                            # Prendi la parte dopo la keyword
+                                potential_city = parts[1].strip().split()[0]
+                            # Capitalizza la prima lettera
+                                potential_city = potential_city.capitalize()
+                            # Verifica che non sia una parola comune
+                                common_words = ["il", "la", "lo", "i", "le", "gli", "che", "mi", "dica", "tempo", "fa"]
+                                if potential_city.lower() not in common_words:
+                                    parsed_dict["city"] = potential_city
+                                    print(f"[DEBUG] Corretto città da '{city}' a '{potential_city}'")
+                                    break
 
-            # Aggiorna il dizionario
+        # Valida e aggiorna i campi
+            valid = parsed_dict.get("valid", True)
+            missing_params = parsed_dict.get("missing_parameters", [])
+        
+        # Controlla se è fuori contesto
+            if "out_of_context" in missing_params:
+                valid = False
+            elif not parsed_dict.get("city"):
+                valid = False
+                if "city" not in missing_params:
+                    missing_params.append("city")
+
+        # Aggiorna il dizionario
             parsed_dict["valid"] = valid
             parsed_dict["missing_parameters"] = missing_params
-            
-            # Crea l'oggetto WeatherRequest dal dizionario
+        
+        # Crea l'oggetto WeatherRequest dal dizionario
             weather_request = WeatherRequest(**parsed_dict)
             print(f"[DEBUG] Oggetto WeatherRequest Pydantic:\n{weather_request}\n")
 
@@ -168,9 +196,5 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
 
         except ValidationError as ve:
             print(f"[ERROR] Errore di validazione Pydantic: {ve}")
-            return None
-        except Exception as e:
-            print(f"[ERROR] Errore durante il parsing: {e}")
-            import traceback
-            traceback.print_exc()
-            return None
+        return None
+    

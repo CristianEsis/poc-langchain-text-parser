@@ -18,7 +18,7 @@ def read_user(auth: UserAuth):
                     "id": u["id"],
                     "name": u["name"],
                     "email": u["email"],
-                    "cities": u.get("cities", [])
+                    "city": u.get("city", [])
                 }
             else:
                 raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")

@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+import json
+from typing import Any
 #from typing import ClassVar
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 
@@ -16,7 +18,7 @@ class User(BaseModel):
     #chat_history: ClassVar[InMemoryChatMessageHistory] = InMemoryChatMessageHistory() da rivedere
 
 class City(BaseModel):
-    city_name: str
+    city_name: dict[str, Any]
 
 class UserAuth(BaseModel):
     email: str

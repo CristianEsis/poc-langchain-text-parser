@@ -6,6 +6,10 @@ from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 from llm import question_answer
+from main_weather import main
+from langchain_ollama import ChatOllama
+from weather_service import WeatherService
+
 
 app = FastAPI(
     title="My FastAPI App",
@@ -84,3 +88,40 @@ def ask_domanda(payload: dict):
         return {"error": "Nessuna domanda fornita"}
     risposta = question_answer(domanda)
     return {"domanda": domanda, "risposta": risposta}
+
+def clean_response(text: str) -> str:
+    """Pulisce la risposta da caratteri di escape"""
+    # Sostituisci \\n con spazi
+    text = text.replace('\\n', ' ')
+    # Rimuovi spazi multipli
+    import re
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+@app.post("/weather", summary="Ottieni informazioni meteo", description="Richiedi informazioni sul meteo per una città specifica", tags=["Meteo"])
+def weather(payload: dict):
+    """Endpoint per richiedere informazioni meteo"""
+    
+    try:
+        user_input = payload.get("richiesta", "")
+        
+        if not user_input:
+            return {"error": "Nessuna richiesta fornita. Usa il campo 'richiesta' nel body JSON"}
+        
+        API_KEY = '2300cb7362ef7560c3e75c5b6aa48b2c'
+        llm = ChatOllama(model="gemma:2b", temperature=0.1)
+        weather_service = WeatherService(API_KEY, llm)
+        
+        response = weather_service.process_request(user_input)
+        
+        # USA LA FUNZIONE DI PULIZIA
+        cleaned_response = clean_response(response)
+        
+        return {
+            "richiesta": user_input,
+            "risposta": cleaned_response
+        }
+        
+    except Exception as e:
+        return {"error": f"Si è verificato un errore: {str(e)}"}
+    
