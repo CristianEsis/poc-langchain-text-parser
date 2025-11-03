@@ -1,25 +1,37 @@
 [
     {
         "id": 1,
-        "email": "mario@example.com",
-        "name": "Mario Rossi"
-    },
-    {
-        "id": 2,
-        "email": "luigi@example.com",
-        "name": "Luigi Verdi"
-    },
-    {
-        "id": 3,
-        "email": "ciao@example.com",
-        "name": "Pluto"
-    },
-    {
-        "id": 8,
-        "name": "paolo",
-        "email": "paolo@example.com",
-        "password": "12354",
+        "name": "Filippo",
+        "email": "filippo@mail.it",
+        "password": "utente1",
         "check_login": true,
+        "tentativi": 0,
+        "cities": [
+            "la città che vuoi aggiungere",
+            "Milano"
+        ]
+    },
+    {
+        "id": 0,
+        "name": "federico",
+        "email": "federico@examle.it",
+        "password": "1234567",
+        "check_login": false,
         "tentativi": 0
+    },
+    {
+        "id": 500,
+        "name": "federico2",
+        "email": "federico2@examle.it",
+        "password": "1234567",
+        "check_login": true,
+        "tentativi": 0,
+        "cities": [
+            "roma",
+            "catania",
+            "modena",
+            "lodi",
+            "milano"
+        ]
     }
 ]

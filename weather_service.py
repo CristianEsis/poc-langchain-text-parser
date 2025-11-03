@@ -9,8 +9,8 @@ from weather_parser import WeatherRequestParser
 from response_generator import NaturalLanguageResponseGenerator
 
 class WeatherService:
-    """Servizio orchestratore per gestire richieste meteo end-to-end"""
-    
+    """Servizio orchestratore per gestire richieste meteo end-to-end"""    
+
     def __init__(self, api_key: str, llm: BaseLanguageModel):
         """
         Inizializza il servizio meteo
@@ -33,8 +33,11 @@ class WeatherService:
         Returns:
             La risposta finale formattata in linguaggio naturale
         """
+
         # 1. Parse della richiesta
         print("\n=== FASE 1: PARSING RICHIESTA ===")
+        print(f"[DEBUG] Richiesta utente originale: {user_input}")
+        
         parsed_request = self.parser.parse(user_input)
         
         if not parsed_request:
@@ -42,7 +45,23 @@ class WeatherService:
         
         # Mostra info sulla richiesta parsata
         self._print_parsed_info(parsed_request)
+
+        # Pre-check per domande fuori contesto
+        NON_METEO_KEYWORDS = [
+            'ricetta', 'pasta', 'cibo', 'cucinare', 'ingredienti',
+            'barzelletta', 'scherzo', 'storia', 'politica', 
+            'sport', 'calcio', 'mondiale', 'partita',
+            'come si fa', 'preparare'
+        ]
         
+        METEO_KEYWORDS = ['meteo', 'tempo', 'temperatura', 'clima', 'previsioni', 'pioggia', 'sole', 'vento']
+        
+        user_input_lower = user_input.lower()
+        if any(keyword in user_input_lower for keyword in NON_METEO_KEYWORDS):
+            # Controlla se contiene anche parole meteo
+            if not any(keyword in user_input_lower for keyword in METEO_KEYWORDS):
+                return "Mi dispiace, posso rispondere solo a domande relative al meteo, come temperatura, umidità, previsioni atmosferiche, qualità dell'aria, ecc. La tua richiesta sembra essere fuori dal mio ambito di competenza."
+
         # 2. Validazione
         if not parsed_request.valid:
             missing = ', '.join(parsed_request.missing_parameters)
@@ -53,6 +72,7 @@ class WeatherService:
         
         # 3. Chiamata API
         print("\n=== FASE 2: CHIAMATA API ===")
+        print(f"[DEBUG] Chiamata API per città: {parsed_request.city}")
         api_data = self.weather_api.get_all_data_for_city(parsed_request.city)
         
         if not api_data:
