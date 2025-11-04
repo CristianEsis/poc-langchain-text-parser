@@ -1,0 +1,4702 @@
+[
+  {
+    "request_text":"Che tempo fa a Roma?",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Roma oggi",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Roma",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Roma?",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Roma",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Roma",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Roma?",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Roma",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Roma questa settimana",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Roma",
+    "city":"Roma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Milano?",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Milano oggi",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Milano",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Milano?",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Milano",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Milano",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Milano?",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Milano",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Milano questa settimana",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Milano",
+    "city":"Milano",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Parigi?",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Parigi oggi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Parigi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Parigi?",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Parigi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Parigi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Parigi?",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Parigi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Parigi questa settimana",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Parigi",
+    "city":"Parigi",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Londra?",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Londra oggi",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Londra",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Londra?",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Londra",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Londra",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Londra?",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Londra",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Londra questa settimana",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Londra",
+    "city":"Londra",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Berlino?",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Berlino oggi",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Berlino",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Berlino?",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Berlino",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Berlino",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Berlino?",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Berlino",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Berlino questa settimana",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Berlino",
+    "city":"Berlino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Madrid?",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Madrid oggi",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Madrid",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Madrid?",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Madrid",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Madrid",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Madrid?",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Madrid",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Madrid questa settimana",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Madrid",
+    "city":"Madrid",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Barcellona?",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Barcellona oggi",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Barcellona",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Barcellona?",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Barcellona",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Barcellona",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Barcellona?",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Barcellona",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Barcellona questa settimana",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Barcellona",
+    "city":"Barcellona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Atene?",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Atene oggi",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Atene",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Atene?",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Atene",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Atene",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Atene?",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Atene",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Atene questa settimana",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Atene",
+    "city":"Atene",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Amsterdam?",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Amsterdam oggi",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Amsterdam",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Amsterdam?",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Amsterdam",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Amsterdam",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Amsterdam?",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Amsterdam",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Amsterdam questa settimana",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Amsterdam",
+    "city":"Amsterdam",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Vienna?",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Vienna oggi",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Vienna",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Vienna?",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Vienna",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Vienna",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Vienna?",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Vienna",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Vienna questa settimana",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Vienna",
+    "city":"Vienna",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Stoccolma?",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Stoccolma oggi",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Stoccolma",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Stoccolma?",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Stoccolma",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Stoccolma",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Stoccolma?",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Stoccolma",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Stoccolma questa settimana",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Stoccolma",
+    "city":"Stoccolma",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Oslo?",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Oslo oggi",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Oslo",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Oslo?",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Oslo",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Oslo",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Oslo?",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Oslo",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Oslo questa settimana",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Oslo",
+    "city":"Oslo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Copenaghen?",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Copenaghen oggi",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Copenaghen",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Copenaghen?",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Copenaghen",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Copenaghen",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Copenaghen?",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Copenaghen",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Copenaghen questa settimana",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Copenaghen",
+    "city":"Copenaghen",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Dublino?",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Dublino oggi",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Dublino",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Dublino?",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Dublino",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Dublino",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Dublino?",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Dublino",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Dublino questa settimana",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Dublino",
+    "city":"Dublino",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Lisbona?",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Lisbona oggi",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Lisbona",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Lisbona?",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Lisbona",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Lisbona",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Lisbona?",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Lisbona",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Lisbona questa settimana",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Lisbona",
+    "city":"Lisbona",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Bucarest?",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Bucarest oggi",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Bucarest",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Bucarest?",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Bucarest",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Bucarest",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Bucarest?",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Bucarest",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Bucarest questa settimana",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Bucarest",
+    "city":"Bucarest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Varsavia?",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Varsavia oggi",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Varsavia",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Varsavia?",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Varsavia",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Varsavia",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Varsavia?",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Varsavia",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Varsavia questa settimana",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Varsavia",
+    "city":"Varsavia",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Praga?",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Praga oggi",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Praga",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Praga?",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Praga",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Praga",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Praga?",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Praga",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Praga questa settimana",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Praga",
+    "city":"Praga",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Budapest?",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Budapest oggi",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Budapest",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Budapest?",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Budapest",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Budapest",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Budapest?",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Budapest",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Budapest questa settimana",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Budapest",
+    "city":"Budapest",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Zurigo?",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Meteo Zurigo oggi",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Zurigo",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Zurigo?",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Temperatura attuale a Zurigo",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Zurigo",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Zurigo?",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Zurigo",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Condizioni meteo a Zurigo questa settimana",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Zurigo",
+    "city":"Zurigo",
+    "continent":"Europa"
+  },
+  {
+    "request_text":"Che tempo fa a Tokyo?",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Tokyo oggi",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Tokyo",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Tokyo?",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Tokyo",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Tokyo",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Tokyo?",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Tokyo",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Tokyo questa settimana",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Tokyo",
+    "city":"Tokyo",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Pechino?",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Pechino oggi",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Pechino",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Pechino?",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Pechino",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Pechino",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Pechino?",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Pechino",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Pechino questa settimana",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Pechino",
+    "city":"Pechino",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Shanghai?",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Shanghai oggi",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Shanghai",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Shanghai?",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Shanghai",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Shanghai",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Shanghai?",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Shanghai",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Shanghai questa settimana",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Shanghai",
+    "city":"Shanghai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Seul?",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Seul oggi",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Seul",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Seul?",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Seul",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Seul",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Seul?",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Seul",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Seul questa settimana",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Seul",
+    "city":"Seul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Bangkok?",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Bangkok oggi",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Bangkok",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Bangkok?",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Bangkok",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Bangkok",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Bangkok?",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Bangkok",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Bangkok questa settimana",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Bangkok",
+    "city":"Bangkok",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Singapore?",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Singapore oggi",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Singapore",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Singapore?",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Singapore",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Singapore",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Singapore?",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Singapore",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Singapore questa settimana",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Singapore",
+    "city":"Singapore",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Hong Kong?",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Hong Kong oggi",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Hong Kong",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Hong Kong?",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Hong Kong",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Hong Kong",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Hong Kong?",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Hong Kong",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Hong Kong questa settimana",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Hong Kong",
+    "city":"Hong Kong",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Delhi?",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Delhi oggi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Delhi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Delhi?",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Delhi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Delhi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Delhi?",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Delhi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Delhi questa settimana",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Delhi",
+    "city":"Delhi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Mumbai?",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Mumbai oggi",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Mumbai",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Mumbai?",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Mumbai",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Mumbai",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Mumbai?",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Mumbai",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Mumbai questa settimana",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Mumbai",
+    "city":"Mumbai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Istanbul?",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Istanbul oggi",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Istanbul",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Istanbul?",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Istanbul",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Istanbul",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Istanbul?",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Istanbul",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Istanbul questa settimana",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Istanbul",
+    "city":"Istanbul",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Dubai?",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Dubai oggi",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Dubai",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Dubai?",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Dubai",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Dubai",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Dubai?",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Dubai",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Dubai questa settimana",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Dubai",
+    "city":"Dubai",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Abu Dhabi?",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Abu Dhabi oggi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Abu Dhabi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Abu Dhabi?",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Abu Dhabi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Abu Dhabi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Abu Dhabi?",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Abu Dhabi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Abu Dhabi questa settimana",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Abu Dhabi",
+    "city":"Abu Dhabi",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Kuala Lumpur?",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Kuala Lumpur oggi",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Kuala Lumpur",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Kuala Lumpur?",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Kuala Lumpur",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Kuala Lumpur",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Kuala Lumpur?",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Kuala Lumpur",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Kuala Lumpur questa settimana",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Kuala Lumpur",
+    "city":"Kuala Lumpur",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Giakarta?",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Giakarta oggi",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Giakarta",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Giakarta?",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Giakarta",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Giakarta",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Giakarta?",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Giakarta",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Giakarta questa settimana",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Giakarta",
+    "city":"Giakarta",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Manila?",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Manila oggi",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Manila",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Manila?",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Manila",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Manila",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Manila?",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Manila",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Manila questa settimana",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Manila",
+    "city":"Manila",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Bali?",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Bali oggi",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Bali",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Bali?",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Bali",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Bali",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Bali?",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Bali",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Bali questa settimana",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Bali",
+    "city":"Bali",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Taipei?",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Taipei oggi",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Taipei",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Taipei?",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Taipei",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Taipei",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Taipei?",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Taipei",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Taipei questa settimana",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Taipei",
+    "city":"Taipei",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Tel Aviv?",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Tel Aviv oggi",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Tel Aviv",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Tel Aviv?",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Tel Aviv",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Tel Aviv",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Tel Aviv?",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Tel Aviv",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Tel Aviv questa settimana",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Tel Aviv",
+    "city":"Tel Aviv",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Teheran?",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Teheran oggi",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Teheran",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Teheran?",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Teheran",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Teheran",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Teheran?",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Teheran",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Teheran questa settimana",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Teheran",
+    "city":"Teheran",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a Mosca?",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Meteo Mosca oggi",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Mosca",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Mosca?",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Temperatura attuale a Mosca",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Mosca",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Mosca?",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Mosca",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Condizioni meteo a Mosca questa settimana",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Mosca",
+    "city":"Mosca",
+    "continent":"Asia"
+  },
+  {
+    "request_text":"Che tempo fa a New York?",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo New York oggi",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per New York",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a New York?",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a New York",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a New York",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a New York?",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a New York",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a New York questa settimana",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per New York",
+    "city":"New York",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Los Angeles?",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Los Angeles oggi",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Los Angeles",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Los Angeles?",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Los Angeles",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Los Angeles",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Los Angeles?",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Los Angeles",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Los Angeles questa settimana",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Los Angeles",
+    "city":"Los Angeles",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Chicago?",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Chicago oggi",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Chicago",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Chicago?",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Chicago",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Chicago",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Chicago?",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Chicago",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Chicago questa settimana",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Chicago",
+    "city":"Chicago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Miami?",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Miami oggi",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Miami",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Miami?",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Miami",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Miami",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Miami?",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Miami",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Miami questa settimana",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Miami",
+    "city":"Miami",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Toronto?",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Toronto oggi",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Toronto",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Toronto?",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Toronto",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Toronto",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Toronto?",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Toronto",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Toronto questa settimana",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Toronto",
+    "city":"Toronto",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Vancouver?",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Vancouver oggi",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Vancouver",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Vancouver?",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Vancouver",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Vancouver",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Vancouver?",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Vancouver",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Vancouver questa settimana",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Vancouver",
+    "city":"Vancouver",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Citt\u00e0 del Messico?",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Citt\u00e0 del Messico oggi",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Citt\u00e0 del Messico",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Citt\u00e0 del Messico?",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Citt\u00e0 del Messico",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Citt\u00e0 del Messico",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Citt\u00e0 del Messico?",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Citt\u00e0 del Messico",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Citt\u00e0 del Messico questa settimana",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Citt\u00e0 del Messico",
+    "city":"Citt\u00e0 del Messico",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Rio de Janeiro?",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Rio de Janeiro oggi",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Rio de Janeiro",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Rio de Janeiro?",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Rio de Janeiro",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Rio de Janeiro",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Rio de Janeiro?",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Rio de Janeiro",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Rio de Janeiro questa settimana",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Rio de Janeiro",
+    "city":"Rio de Janeiro",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a San Paolo?",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo San Paolo oggi",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per San Paolo",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a San Paolo?",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a San Paolo",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a San Paolo",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a San Paolo?",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a San Paolo",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a San Paolo questa settimana",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per San Paolo",
+    "city":"San Paolo",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Buenos Aires?",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Buenos Aires oggi",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Buenos Aires",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Buenos Aires?",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Buenos Aires",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Buenos Aires",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Buenos Aires?",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Buenos Aires",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Buenos Aires questa settimana",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Buenos Aires",
+    "city":"Buenos Aires",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Santiago?",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Santiago oggi",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Santiago",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Santiago?",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Santiago",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Santiago",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Santiago?",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Santiago",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Santiago questa settimana",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Santiago",
+    "city":"Santiago",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Lima?",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Lima oggi",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Lima",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Lima?",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Lima",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Lima",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Lima?",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Lima",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Lima questa settimana",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Lima",
+    "city":"Lima",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Bogot\u00e0?",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Bogot\u00e0 oggi",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Bogot\u00e0",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Bogot\u00e0?",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Bogot\u00e0",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Bogot\u00e0",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Bogot\u00e0?",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Bogot\u00e0",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Bogot\u00e0 questa settimana",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Bogot\u00e0",
+    "city":"Bogot\u00e0",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Caracas?",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Caracas oggi",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Caracas",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Caracas?",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Caracas",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Caracas",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Caracas?",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Caracas",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Caracas questa settimana",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Caracas",
+    "city":"Caracas",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Havana?",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Havana oggi",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Havana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Havana?",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Havana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Havana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Havana?",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Havana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Havana questa settimana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Havana",
+    "city":"Havana",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Montreal?",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Montreal oggi",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Montreal",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Montreal?",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Montreal",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Montreal",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Montreal?",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Montreal",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Montreal questa settimana",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Montreal",
+    "city":"Montreal",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Boston?",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Boston oggi",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Boston",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Boston?",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Boston",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Boston",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Boston?",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Boston",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Boston questa settimana",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Boston",
+    "city":"Boston",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a San Francisco?",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo San Francisco oggi",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per San Francisco",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a San Francisco?",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a San Francisco",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a San Francisco",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a San Francisco?",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a San Francisco",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a San Francisco questa settimana",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per San Francisco",
+    "city":"San Francisco",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Seattle?",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Seattle oggi",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Seattle",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Seattle?",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Seattle",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Seattle",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Seattle?",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Seattle",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Seattle questa settimana",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Seattle",
+    "city":"Seattle",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Washington?",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Meteo Washington oggi",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Washington",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Washington?",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Temperatura attuale a Washington",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Washington",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Washington?",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Washington",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Condizioni meteo a Washington questa settimana",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Washington",
+    "city":"Washington",
+    "continent":"Americhe"
+  },
+  {
+    "request_text":"Che tempo fa a Il Cairo?",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Il Cairo oggi",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Il Cairo",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Il Cairo?",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Il Cairo",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Il Cairo",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Il Cairo?",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Il Cairo",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Il Cairo questa settimana",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Il Cairo",
+    "city":"Il Cairo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Citt\u00e0 del Capo?",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Citt\u00e0 del Capo oggi",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Citt\u00e0 del Capo",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Citt\u00e0 del Capo?",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Citt\u00e0 del Capo",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Citt\u00e0 del Capo",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Citt\u00e0 del Capo?",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Citt\u00e0 del Capo",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Citt\u00e0 del Capo questa settimana",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Citt\u00e0 del Capo",
+    "city":"Citt\u00e0 del Capo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Johannesburg?",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Johannesburg oggi",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Johannesburg",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Johannesburg?",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Johannesburg",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Johannesburg",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Johannesburg?",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Johannesburg",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Johannesburg questa settimana",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Johannesburg",
+    "city":"Johannesburg",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Nairobi?",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Nairobi oggi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Nairobi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Nairobi?",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Nairobi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Nairobi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Nairobi?",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Nairobi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Nairobi questa settimana",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Nairobi",
+    "city":"Nairobi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Casablanca?",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Casablanca oggi",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Casablanca",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Casablanca?",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Casablanca",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Casablanca",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Casablanca?",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Casablanca",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Casablanca questa settimana",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Casablanca",
+    "city":"Casablanca",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Tunisi?",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Tunisi oggi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Tunisi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Tunisi?",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Tunisi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Tunisi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Tunisi?",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Tunisi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Tunisi questa settimana",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Tunisi",
+    "city":"Tunisi",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Lagos?",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Lagos oggi",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Lagos",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Lagos?",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Lagos",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Lagos",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Lagos?",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Lagos",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Lagos questa settimana",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Lagos",
+    "city":"Lagos",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Accra?",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Accra oggi",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Accra",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Accra?",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Accra",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Accra",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Accra?",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Accra",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Accra questa settimana",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Accra",
+    "city":"Accra",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Dakar?",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Dakar oggi",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Dakar",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Dakar?",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Dakar",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Dakar",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Dakar?",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Dakar",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Dakar questa settimana",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Dakar",
+    "city":"Dakar",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Addis Abeba?",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Addis Abeba oggi",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Addis Abeba",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Addis Abeba?",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Addis Abeba",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Addis Abeba",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Addis Abeba?",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Addis Abeba",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Addis Abeba questa settimana",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Addis Abeba",
+    "city":"Addis Abeba",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Dar es Salaam?",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Dar es Salaam oggi",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Dar es Salaam",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Dar es Salaam?",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Dar es Salaam",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Dar es Salaam",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Dar es Salaam?",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Dar es Salaam",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Dar es Salaam questa settimana",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Dar es Salaam",
+    "city":"Dar es Salaam",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Marrakech?",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Marrakech oggi",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Marrakech",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Marrakech?",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Marrakech",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Marrakech",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Marrakech?",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Marrakech",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Marrakech questa settimana",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Marrakech",
+    "city":"Marrakech",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Tripoli?",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Tripoli oggi",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Tripoli",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Tripoli?",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Tripoli",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Tripoli",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Tripoli?",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Tripoli",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Tripoli questa settimana",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Tripoli",
+    "city":"Tripoli",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Kinshasa?",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Kinshasa oggi",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Kinshasa",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Kinshasa?",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Kinshasa",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Kinshasa",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Kinshasa?",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Kinshasa",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Kinshasa questa settimana",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Kinshasa",
+    "city":"Kinshasa",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Luanda?",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Luanda oggi",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Luanda",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Luanda?",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Luanda",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Luanda",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Luanda?",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Luanda",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Luanda questa settimana",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Luanda",
+    "city":"Luanda",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Maputo?",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Maputo oggi",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Maputo",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Maputo?",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Maputo",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Maputo",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Maputo?",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Maputo",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Maputo questa settimana",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Maputo",
+    "city":"Maputo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Antananarivo?",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Antananarivo oggi",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Antananarivo",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Antananarivo?",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Antananarivo",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Antananarivo",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Antananarivo?",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Antananarivo",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Antananarivo questa settimana",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Antananarivo",
+    "city":"Antananarivo",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Port Louis?",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Port Louis oggi",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Port Louis",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Port Louis?",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Port Louis",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Port Louis",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Port Louis?",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Port Louis",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Port Louis questa settimana",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Port Louis",
+    "city":"Port Louis",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Gaborone?",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Gaborone oggi",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Gaborone",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Gaborone?",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Gaborone",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Gaborone",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Gaborone?",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Gaborone",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Gaborone questa settimana",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Gaborone",
+    "city":"Gaborone",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Windhoek?",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Meteo Windhoek oggi",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Windhoek",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Windhoek?",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Temperatura attuale a Windhoek",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Windhoek",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Windhoek?",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Windhoek",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Condizioni meteo a Windhoek questa settimana",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Windhoek",
+    "city":"Windhoek",
+    "continent":"Africa"
+  },
+  {
+    "request_text":"Che tempo fa a Sydney?",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Sydney oggi",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Sydney",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Sydney?",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Sydney",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Sydney",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Sydney?",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Sydney",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Sydney questa settimana",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Sydney",
+    "city":"Sydney",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Melbourne?",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Melbourne oggi",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Melbourne",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Melbourne?",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Melbourne",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Melbourne",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Melbourne?",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Melbourne",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Melbourne questa settimana",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Melbourne",
+    "city":"Melbourne",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Brisbane?",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Brisbane oggi",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Brisbane",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Brisbane?",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Brisbane",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Brisbane",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Brisbane?",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Brisbane",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Brisbane questa settimana",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Brisbane",
+    "city":"Brisbane",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Perth?",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Perth oggi",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Perth",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Perth?",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Perth",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Perth",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Perth?",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Perth",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Perth questa settimana",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Perth",
+    "city":"Perth",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Adelaide?",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Adelaide oggi",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Adelaide",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Adelaide?",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Adelaide",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Adelaide",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Adelaide?",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Adelaide",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Adelaide questa settimana",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Adelaide",
+    "city":"Adelaide",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Auckland?",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Auckland oggi",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Auckland",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Auckland?",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Auckland",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Auckland",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Auckland?",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Auckland",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Auckland questa settimana",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Auckland",
+    "city":"Auckland",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Wellington?",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Wellington oggi",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Wellington",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Wellington?",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Wellington",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Wellington",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Wellington?",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Wellington",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Wellington questa settimana",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Wellington",
+    "city":"Wellington",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Christchurch?",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Christchurch oggi",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Christchurch",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Christchurch?",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Christchurch",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Christchurch",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Christchurch?",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Christchurch",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Christchurch questa settimana",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Christchurch",
+    "city":"Christchurch",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Honolulu?",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Honolulu oggi",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Honolulu",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Honolulu?",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Honolulu",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Honolulu",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Honolulu?",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Honolulu",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Honolulu questa settimana",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Honolulu",
+    "city":"Honolulu",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Suva?",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Suva oggi",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Suva",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Suva?",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Suva",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Suva",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Suva?",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Suva",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Suva questa settimana",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Suva",
+    "city":"Suva",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Apia?",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Apia oggi",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Apia",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Apia?",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Apia",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Apia",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Apia?",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Apia",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Apia questa settimana",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Apia",
+    "city":"Apia",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Port Moresby?",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Port Moresby oggi",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Port Moresby",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Port Moresby?",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Port Moresby",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Port Moresby",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Port Moresby?",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Port Moresby",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Port Moresby questa settimana",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Port Moresby",
+    "city":"Port Moresby",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Noumea?",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Noumea oggi",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Noumea",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Noumea?",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Noumea",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Noumea",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Noumea?",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Noumea",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Noumea questa settimana",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Noumea",
+    "city":"Noumea",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo fa a Papeete?",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Meteo Papeete oggi",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni meteorologiche per Papeete",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Com'\u00e8 il clima a Papeete?",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Temperatura attuale a Papeete",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Umidit\u00e0 e vento a Papeete",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Che tempo ci sar\u00e0 domani a Papeete?",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Previsioni per il weekend a Papeete",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Condizioni meteo a Papeete questa settimana",
+    "city":"Papeete",
+    "continent":"Oceania"
+  },
+  {
+    "request_text":"Informazioni meteo dettagliate per Papeete",
+    "city":"Papeete",
+    "continent":"Oceania"
+  }
+]

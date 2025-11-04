@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, Dict, Any, Tuple
 
 class WeatherAPI:
@@ -12,6 +12,7 @@ class WeatherAPI:
         self.OWM_AIR_POLLUTION_URL = "http://api.openweathermap.org/data/2.5/air_pollution"
         self.OWM_GEO_URL = "http://api.openweathermap.org/geo/1.0/direct"
         self.OPEN_METEO_CURRENT_URL = "https://api.open-meteo.com/v1/forecast"
+        self.TIMEZONE_OFFSET = 1  # GMT+1
 
     def get_coordinates(self, city_name: str) -> Tuple[Optional[float], Optional[float]]:
         """Ottiene le coordinate geografiche di una città"""
@@ -91,7 +92,7 @@ class WeatherAPI:
             'latitude': lat,
             'longitude': lon,
             'current_weather': True,
-            'timezone': 'auto'
+            'timezone': 'Europe/Rome'  # GMT+1/+2 con DST
         }
         response = requests.get(self.OPEN_METEO_CURRENT_URL, params=params)
         
@@ -117,12 +118,16 @@ class WeatherAPI:
         weather_om = self.get_current_weather_openmeteo(lat, lon)
         parsed_om = self._parse_openmeteo_data(weather_om)
 
+        # Ottieni timestamp corrente in GMT+1
+        now_gmt1 = datetime.utcnow() + timedelta(hours=self.TIMEZONE_OFFSET)
+
         return {
             'city': city_name,
+            'timezone': 'GMT+1',
             'openweathermap_current': parsed_owm,
             'openweathermap_forecast_5d': parsed_forecast,
             'openmeteo_current': parsed_om,
-            'timestamp': datetime.now().isoformat()
+            'timestamp': now_gmt1.isoformat()
         }
 
     def _parse_owm_data(self, weather_data: Optional[Dict], air_data: Optional[Dict]) -> Optional[Dict]:
@@ -157,7 +162,7 @@ class WeatherAPI:
         return owm_parsed
 
     def _parse_forecast_data(self, forecast_data: Optional[Dict]) -> Optional[list]:
-        """Parse dei dati previsione di OpenWeatherMap"""
+        """Parse dei dati previsione di OpenWeatherMap - converte in GMT+1"""
         if not forecast_data or 'list' not in forecast_data:
             print("Dati previsione OWM mancanti o non validi per il parsing")
             return None
@@ -166,8 +171,14 @@ class WeatherAPI:
         for item in forecast_data['list']:
             try:
                 main = item['main']
+                # La data è in formato Unix timestamp (UTC)
+                dt_utc = datetime.utcfromtimestamp(item['dt'])
+                # Converti in GMT+1
+                dt_gmt1 = dt_utc + timedelta(hours=self.TIMEZONE_OFFSET)
+                
                 parsed_list.append({
-                    'datetime': item['dt_txt'],
+                    'datetime': dt_gmt1.strftime('%Y-%m-%d %H:%M:%S'),
+                    'timezone': 'GMT+1',
                     'temperature': main['temp'],
                     'feels_like': main['feels_like'],
                     'humidity': main['humidity'],
