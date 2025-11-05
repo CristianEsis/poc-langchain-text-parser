@@ -1,20 +1,24 @@
 from fastapi import FastAPI, HTTPException
 from Management_Functions.Managment_functions import error_manager
 from Models_Manager.models import User, UserAuth
-from User_Management.login import login_user, register_new_user,perform_logout
+from User_Management.login import login_user, register_new_user, perform_logout
 from DatabaseJSON.database import read_db
 from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
-#from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
-from main_weather import main
-from langchain_ollama import ChatOllama
-from weather_service import WeatherService
-from datetime import datetime
+#from llm import question_answer
 from continent_classifier import ContinentClassifier
+#from weather_service import WeatherService, WeatherRequestParser  # Importa il parser
+from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
-import os
 import time
+from langchain_ollama import ChatOllama  # Assicurati di avere questa importazione
+import os
+from weather_parser import WeatherRequestParser
+
+# Inizializza l'LLM per il parsing delle richieste meteo
+weather_llm = ChatOllama(model="gemma:2b", temperature=0)  # Usa il modello che preferisci
+weather_parser = WeatherRequestParser(weather_llm)  # Inizializza il parser
 
 
 app = FastAPI(
@@ -105,63 +109,130 @@ def clean_response(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
+
 @app.post("/weather", response_model=DispatchResponse)
 async def get_weather(data: dict):
     db = read_db()
-
     email = data.get("email")
     password = data.get("password")
     domanda = data.get("domanda")
 
+    # Autenticazione utente
     found_user = next((u for u in db if u["email"] == email and u["password"] == password), None)
     if not found_user:
         raise HTTPException(status_code=404, detail="Credenziali errate")
 
     start_time = time.time()
-
     try:
-        continente, citta = classifier.predict_continent(domanda)
-        if citta:
-            citta = citta.strip()
-            for prefix in ["a ", "ad ", "in ", "da ", "di ", "la ", "il "]:
-                if citta.lower().startswith(prefix):
-                    citta = citta[len(prefix):]
-                    break
-        citta = citta.capitalize()
-        weather_data = classifier.simulate_weather_service(continente, citta, domanda)
+        print(f"[DEBUG] Parsing richiesta: {domanda}")
+        parsed_request = weather_parser.parse(domanda)
+        
+        # Controlla se il parser ha restituito None (richiesta non meteo)
+        if parsed_request is None:
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "error": "Richiesta non meteo",
+                    "message": "Non posso rispondere a richieste fuori dal contesto meteo. Questo servizio è dedicato esclusivamente alle previsioni meteorologiche.",
+                    "richiesta_originale": domanda
+                }
+            )
+        
+        # Controlla se la richiesta è valida
+        if not parsed_request.valid:
+            # Se la richiesta è invalida ma non è "out_of_context", potrebbe essere un problema diverso
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "error": "Richiesta incompleta",
+                    "message": "Richiesta meteo incompleta. Specificare una città.",
+                    "richiesta_originale": domanda
+                }
+            )
+        
+        # Procedi con l'elaborazione della richiesta meteo valida
+        # ...
+
+    except HTTPException as he:
+        raise he
+    try:
+        # 🔍 PRIMO CONTROLLO: Verifica se è una richiesta meteo
+        parsed_request = weather_parser.parse(domanda)
+        
+        # Gestione richieste non meteo
+        if parsed_request is None or not parsed_request.valid:
+            # Estrai il motivo dalla richiesta parsata o usa un fallback
+            reason = "Richiesta non valida"
+            if parsed_request and "out_of_context" in parsed_request.missing_parameters:
+                reason = "Richiesta fuori contesto meteorologico"
+            
+            error_time = (time.time() - start_time) * 1000
+            error_details = {
+                "error": reason,
+                "message": "❌ Non posso rispondere a richieste fuori dal contesto meteo. Questo servizio è dedicato esclusivamente alle previsioni meteorologiche.",
+                "richiesta_originale": domanda,
+                "timestamp": datetime.now().isoformat(),
+                "processing_time_ms": round(error_time, 2)
+            }
+            print(f"[NON-METEO] Rilevata richiesta non meteo: {domanda}")
+            raise HTTPException(status_code=400, detail=error_details)
+
+        # 🌍 Estrai città dal parsing strutturato
+        citta = parsed_request.city.strip()
+        if not citta:
+            raise HTTPException(status_code=400, detail="Città non specificata nella richiesta")
+
+        # Pulisci il nome della città
+        prefixes = ["a ", "ad ", "in ", "da ", "di ", "la ", "il ", "a'", "ad'"]
+        citta_clean = citta.lower()
+        for prefix in prefixes:
+            if citta_clean.startswith(prefix):
+                citta_clean = citta_clean[len(prefix):].strip()
+                break
+        citta_clean = citta_clean.capitalize()
+
+        # 🌐 Classifica il continente
+        continente, _ = classifier.predict_continent(domanda)
+        
+        # 🌤️ Simula i dati meteo (sostituisci con chiamata reale a un servizio)
+        weather_data = {
+            "service_url": f"https://weather.service/{continente}/{citta_clean}",
+            "temperature": 22.5,
+            "humidity": 65,
+            "description": "Soleggiato"
+        }
+
         processing_time = (time.time() - start_time) * 1000
 
+        # 📦 Prepara la risposta
         response = DispatchResponse(
             richiesta_originale=domanda,
             continente_rilevato=continente,
-            citta=citta,
+            citta=citta_clean,
             servizio_destinazione=weather_data["service_url"],
             dati_meteo=weather_data,
             tempo_elaborazione_ms=round(processing_time, 2),
             timestamp=datetime.now().isoformat()
         )
 
-        add_city(found_user, citta, weather_data)
+        # 💾 Salva la città nella cronologia utente
+        add_city(found_user, citta_clean, weather_data)
         return response
-        
+
+    except HTTPException as he:
+        # Rilancia gli errori HTTP già gestiti
+        raise he
     except Exception as e:
         error_time = (time.time() - start_time) * 1000
         error_details = {
             "error": str(e),
-            "message": "Errore durante l'elaborazione della richiesta meteo",
+            "message": "Errore durante l'elaborazione della richiesta",
             "timestamp": datetime.now().isoformat(),
             "processing_time_ms": round(error_time, 2)
         }
+        print(f"[ERROR] Errore elaborazione meteo: {str(e)}")
+        raise HTTPException(status_code=500, detail=error_details)
         
-        # Stampa l'errore dettagliato nel log del server
-        print(f"[ERROR] {str(e)}")
-        print(f"[ERROR DETAILS] {error_details}")
-        
-        raise HTTPException(
-            status_code=500,
-            detail=error_details
-        )
-
 @app.get("/model/status", summary="Stato del modello di classificazione")
 def get_model_status():
     """Restituisce informazioni sul modello di classificazione caricato"""

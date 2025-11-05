@@ -20,3 +20,4 @@ class City(BaseModel):
 class UserAuth(BaseModel):
     email: str
     password: str
+    
