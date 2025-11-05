@@ -1,14 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from Management_Functions.Managment_functions import error_manager
 from Models_Manager.models import User, UserAuth
 from User_Management.login import login_user, register_new_user,perform_logout
+from DatabaseJSON.database import read_db
 from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
-from llm import question_answer
 from main_weather import main
 from langchain_ollama import ChatOllama
 from weather_service import WeatherService
+from datetime import datetime
+from continent_classifier import ContinentClassifier
+from pydantic import BaseModel
+from typing import Optional, Dict, Any
+import os
+import time
 
 
 app = FastAPI(
@@ -16,6 +22,22 @@ app = FastAPI(
     description="Un progetto FastAPI minimale, pronto per crescere.",
     version="0.1.0"
 )
+# Carica il classificatore all'avvio
+classifier = ContinentClassifier()
+classifier.load_model()
+print("Classificatore continentale caricato e pronto")
+
+class WeatherRequest(BaseModel):
+    richiesta: str
+
+class DispatchResponse(BaseModel):
+    richiesta_originale: str
+    continente_rilevato: str
+    citta: str
+    servizio_destinazione: str
+    dati_meteo: Dict[str, Any]
+    tempo_elaborazione_ms: float
+    timestamp: str
 
 @app.get("/")
 def read_root():
@@ -67,27 +89,12 @@ def delete_user_retrieve(user_id: int,  auth: UserAuth):
     except Exception as e:
         return error_manager(e)
 
-@app.post("/city/add", summary = 'Aggiungi le città di cui vuoi sapere le informazioni(max 5)', description='Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà la tua ultima città aggiunta\n{"email": "la tua email", "password": "la tua password", "city_name": "la città che vuoi aggiungere"}\n RICORDATI DI ESSERE LOGGATO', tags=["Città"])
-def add_city_retrieve(user_data: dict):
-    try:
-        return add_city(user_data)
-    except Exception as e:
-        return error_manager(e)
-
 @app.get("/city/list",summary = "Ti elencherà le 5 città cercate", description="Questa funzionalità permette di elencarti le prime 5 città cercate", tags=["Città"])
 def list_of_city_retrieve(auth: UserAuth):
     try:
         return list_of_city(auth)
     except Exception as e:
         return error_manager(e)
-
-@app.post("/ask")
-def ask_domanda(payload: dict):
-    domanda = payload.get("domanda", "")
-    if not domanda:
-        return {"error": "Nessuna domanda fornita"}
-    risposta = question_answer(domanda)
-    return {"domanda": domanda, "risposta": risposta}
 
 def clean_response(text: str) -> str:
     """Pulisce la risposta da caratteri di escape"""
@@ -98,30 +105,97 @@ def clean_response(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-@app.post("/weather", summary="Ottieni informazioni meteo", description="Richiedi informazioni sul meteo per una città specifica", tags=["Meteo"])
-def weather(payload: dict):
-    """Endpoint per richiedere informazioni meteo"""
-    
+@app.post("/weather", response_model=DispatchResponse)
+async def get_weather(data: dict):
+    db = read_db()
+
+    email = data.get("email")
+    password = data.get("password")
+    domanda = data.get("domanda")
+
+    found_user = next((u for u in db if u["email"] == email and u["password"] == password), None)
+    if not found_user:
+        raise HTTPException(status_code=404, detail="Credenziali errate")
+
+    start_time = time.time()
+
     try:
-        user_input = payload.get("richiesta", "")
-        
-        if not user_input:
-            return {"error": "Nessuna richiesta fornita. Usa il campo 'richiesta' nel body JSON"}
-        
-        API_KEY = '2300cb7362ef7560c3e75c5b6aa48b2c'
-        llm = ChatOllama(model="gemma:2b", temperature=0.1)
-        weather_service = WeatherService(API_KEY, llm)
-        
-        response = weather_service.process_request(user_input)
-        
-        # USA LA FUNZIONE DI PULIZIA
-        cleaned_response = clean_response(response)
-        
-        return {
-            "richiesta": user_input,
-            "risposta": cleaned_response
-        }
+        continente, citta = classifier.predict_continent(domanda)
+        if citta:
+            citta = citta.strip()
+            for prefix in ["a ", "ad ", "in ", "da ", "di ", "la ", "il "]:
+                if citta.lower().startswith(prefix):
+                    citta = citta[len(prefix):]
+                    break
+        citta = citta.capitalize()
+        weather_data = classifier.simulate_weather_service(continente, citta, domanda)
+        processing_time = (time.time() - start_time) * 1000
+
+        response = DispatchResponse(
+            richiesta_originale=domanda,
+            continente_rilevato=continente,
+            citta=citta,
+            servizio_destinazione=weather_data["service_url"],
+            dati_meteo=weather_data,
+            tempo_elaborazione_ms=round(processing_time, 2),
+            timestamp=datetime.now().isoformat()
+        )
+
+        add_city(found_user, citta, weather_data)
+        return response
         
     except Exception as e:
-        return {"error": f"Si è verificato un errore: {str(e)}"}
+        error_time = (time.time() - start_time) * 1000
+        error_details = {
+            "error": str(e),
+            "message": "Errore durante l'elaborazione della richiesta meteo",
+            "timestamp": datetime.now().isoformat(),
+            "processing_time_ms": round(error_time, 2)
+        }
+        
+        # Stampa l'errore dettagliato nel log del server
+        print(f"[ERROR] {str(e)}")
+        print(f"[ERROR DETAILS] {error_details}")
+        
+        raise HTTPException(
+            status_code=500,
+            detail=error_details
+        )
+
+@app.get("/model/status", summary="Stato del modello di classificazione")
+def get_model_status():
+    """Restituisce informazioni sul modello di classificazione caricato"""
     
+    if classifier.model is None:
+        return {
+            "status": "not_loaded",
+            "message": "Modello non caricato. Eseguire l'addestramento prima.",
+            "model_path": classifier.model_path,
+            "dataset_path": classifier.dataset_path
+        }
+    
+    return {
+        "status": "ready",
+        "model_type": "Random Forest Classifier",
+        "dataset_info": {
+            "source": "CityCountryContinent.xlsx",
+            "cities_count": len(classifier.cities_df) if classifier.cities_df is not None else 0,
+            "continents_covered": classifier.cities_df['Continent'].unique().tolist() if classifier.cities_df is not None else []
+        },
+        "last_trained": datetime.fromtimestamp(os.path.getmtime(classifier.model_path)).isoformat() if os.path.exists(classifier.model_path) else "N/A",
+        "model_path": classifier.model_path
+    }
+
+@app.get("/")
+def read_root():
+    return {"message": "🌤️ Benvenuto nel sistema di Dispatching Meteo basato su Machine Learning!"}
+
+@app.get("/health")
+def health_check():
+    model_status = "ready" if classifier.model is not None else "not_ready"
+    return {"status": "ok", "classifier_status": model_status}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

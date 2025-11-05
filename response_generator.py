@@ -18,12 +18,26 @@ class NaturalLanguageResponseGenerator:
         template = """
 Sei un assistente meteorologico che fornisce risposte chiare e utili.
 
-Ecco i dati meteo grezzi ottenuti per la citta' '{city}':
+Ecco i dati meteo per la città '{city}':
 {api_response_json}
 
 La richiesta originale dell'utente era: "{original_request}"
 
-Formatta questi dati in una risposta completa, scorrevole e in linguaggio naturale, rispondendo specificamente alla richiesta dell'utente. Usa un linguaggio chiaro e conciso. Se la richiesta chiedeva specifiche metriche (come temperatura, umidita'), concentrati su quelle. Se chiedeva un intervallo di date, riassumi le condizioni per quel periodo.
+ISTRUZIONI IMPORTANTI:
+1. Tutti gli orari sono in formato GMT+1 (fuso orario italiano)
+2. Se sono disponibili le statistiche aggregate (period_statistics), UTILIZZALE come dati principali:
+   - Menziona la temperatura MEDIA, minima e massima per il periodo richiesto
+   - Indica chiaramente che si tratta di dati medi/previsti per il periodo specificato
+3. Se l'utente ha chiesto un periodo specifico (mattino, pomeriggio, sera, notte), menzionalo nella risposta
+4. Se l'utente ha chiesto una data specifica o un intervallo, fai riferimento a quel periodo
+5. Fornisci una risposta completa ma concisa, concentrandoti sulle metriche richieste
+6. NON elencare tutte le previsioni orarie, usa le statistiche aggregate
+7. Se disponibili, menziona anche umidità e pressione medie
+
+Esempio di risposta corretta:
+"A Milano questa mattina (GMT+1) la temperatura media sarà di 15.2°C, con minime di 13.5°C e massime di 17.1°C. L'umidità media si attesterà intorno al 65% e la pressione a 1015 hPa."
+
+Formatta ora la tua risposta in linguaggio naturale, chiaro e professionale:
 """
         return PromptTemplate(
             template=template,
@@ -42,14 +56,23 @@ Formatta questi dati in una risposta completa, scorrevole e in linguaggio natura
         Args:
             original_request: La richiesta originale dell'utente
             parsed_request: L'oggetto WeatherRequest parsato
-            api_data: I dati grezzi dall'API meteo
+            api_data: I dati grezzi dall'API meteo (con statistiche aggregate)
             
         Returns:
             Una stringa con la risposta formattata in linguaggio naturale
         """
         try:
             city = parsed_request.city or "Sconosciuta"
-            api_response_json_str = json.dumps(api_data, indent=2, ensure_ascii=False)
+            
+            # Prepara i dati per l'LLM, evidenziando le statistiche se disponibili
+            data_for_llm = api_data.copy()
+            
+            # Se ci sono statistiche, mettile in evidenza
+            if 'period_statistics' in data_for_llm:
+                stats = data_for_llm['period_statistics']
+                print(f"[DEBUG] Usando statistiche aggregate: {stats}")
+            
+            api_response_json_str = json.dumps(data_for_llm, indent=2, ensure_ascii=False)
 
             final_response_prompt = self.prompt.format(
                 city=city,
