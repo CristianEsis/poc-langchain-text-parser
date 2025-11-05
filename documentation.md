@@ -1,16 +1,3 @@
-Understood. I’ll now generate a comprehensive and well-structured **Markdown (.md)** documentation file based on the provided codebase. This documentation will cover:
-
-- Project overview  
-- Architecture and components  
-- Core modules and classes  
-- API endpoints  
-- Data models  
-- Setup & usage instructions  
-
-Here is the full documentation ready to be copied into a .md file:
-
----
-
 # 🌦️ Weather Dispatching API – Technical Documentation
 
 ## 📌 Overview
