@@ -18,6 +18,12 @@
                 "temperature": 22.5,
                 "humidity": 65,
                 "description": "Soleggiato"
+            },
+            "new york": {
+                "service_url": "https://weather.service/Americhe/New york",
+                "temperature": 22.5,
+                "humidity": 65,
+                "description": "Soleggiato"
             }
         }
     }
