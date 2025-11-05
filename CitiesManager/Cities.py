@@ -51,23 +51,42 @@ def load_city(user_id: int) -> list[str]:
     except Exception as e:
         return error_manager(str(e))
 
-def add_city(user_data: dict):
+def add_city(user: dict, city_name: str, weather_data: dict = None):
+    """Aggiunge o aggiorna una città nel profilo utente autenticato."""
     db = read_db()
-    city_name = user_data.get("city_name")
-    user_id = user_data.get("id")
-    email = user_data.get("email")
-    password = user_data.get("password")
+
+    # 🔹 Normalizza il nome della città
+    city_name = city_name.strip()
+    for prefix in ["a ", "ad ", "in ", "da ", "di ", "la ", "il "]:
+        if city_name.lower().startswith(prefix):
+            city_name = city_name[len(prefix):]
+            break
+    city_name = city_name.capitalize()
 
     for u in db:
-        if u.get("check_login", False) and u["id"] == user_id and u["email"] == email and u["password"] == password:
-            city = City(city_name=city_name)
-            result = save_city(user_id, city)
-            city = load_city(user_id)
+        if u["email"] == user["email"]:
+            # Se il campo "cities" non esiste o è nel formato errato, inizializzalo
+            if "cities" not in u or not isinstance(u["cities"], dict):
+                u["cities"] = {}
+
+            # 🔹 Se la città è già presente, aggiorna i dati
+            if city_name.lower() in u["cities"]:
+                print(f"Aggiornamento dati per la città '{city_name}'...")
+            else:
+                print(f"Aggiunta nuova città '{city_name}'...")
+
+            # Sovrascrivi o aggiungi la città con i nuovi dati meteo
+            u["cities"][city_name.lower()] = weather_data or {}
+
+            # Aggiorna il database
+            update_db(db)
+
             return {
-                "message": result["msg"],
-                "city": city
+                "message": f"Città '{city_name}' aggiunta o aggiornata con successo.",
+                "city": u["cities"][city_name.lower()]
             }
-    return {"msg": "Non hai un account, registrati o loggati per effettuare questa operazione"}
+
+    return {"msg": "Utente non trovato nel database"}
 
 def list_of_city(auth: UserAuth):
     db = read_db()
@@ -76,7 +95,7 @@ def list_of_city(auth: UserAuth):
             if u.get("check_login", False):
                 return {
                     "message": f"Città salvate per l'utente {u['name']}",
-                    "city": u.get("city", [])
+                    "city": u["cities"]
                 }
             else:
                 raise HTTPException(status_code=401, detail="Utente non loggato. Effettua il login prima di accedere ai dati.")
