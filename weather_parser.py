@@ -260,3 +260,4 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
         except Exception as e:
             print(f"[ERROR] Errore durante il parsing: {e}")
             return None
+        

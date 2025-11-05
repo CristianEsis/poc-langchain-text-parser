@@ -24,6 +24,12 @@
                 "temperature": 22.5,
                 "humidity": 65,
                 "description": "Soleggiato"
+            },
+            "bologna": {
+                "service_url": "https://weather.service/Europa/Bologna",
+                "temperature": 22.5,
+                "humidity": 65,
+                "description": "Soleggiato"
             }
         }
     }
