@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from Management_Functions.Managment_functions import error_manager
 from Models_Manager.models import User, UserAuth
 from User_Management.login import login_user, register_new_user,perform_logout
+from DatabaseJSON.database import read_db
 from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
@@ -89,13 +90,6 @@ def delete_user_retrieve(user_id: int,  auth: UserAuth):
     except Exception as e:
         return error_manager(e)
 
-@app.post("/city/add", summary = 'Aggiungi le città di cui vuoi sapere le informazioni(max 5)', description='Questa funzionalità permette di aggiungere massimo 5 città, nel caso si aggiungessero piu città il programma rimuoverà la tua ultima città aggiunta\n{"email": "la tua email", "password": "la tua password", "city_name": "la città che vuoi aggiungere"}\n RICORDATI DI ESSERE LOGGATO', tags=["Città"])
-def add_city_retrieve(user_data: dict):
-    try:
-        return add_city(user_data)
-    except Exception as e:
-        return error_manager(e)
-
 @app.get("/city/list",summary = "Ti elencherà le 5 città cercate", description="Questa funzionalità permette di elencarti le prime 5 città cercate", tags=["Città"])
 def list_of_city_retrieve(auth: UserAuth):
     try:
@@ -120,25 +114,34 @@ def clean_response(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-@app.post("/weather", response_model=DispatchResponse, summary="Richiedi informazioni meteo con dispatching intelligente")
-async def get_weather(request: WeatherRequest):
-    """Endpoint per richiedere informazioni meteo con dispatching automatico per continente"""
-    
+@app.post("/weather", response_model=DispatchResponse)
+async def get_weather(data: dict):
+    db = read_db()
+
+    email = data.get("email")
+    password = data.get("password")
+    domanda = data.get("domanda")
+
+    found_user = next((u for u in db if u["email"] == email and u["password"] == password), None)
+    if not found_user:
+        raise HTTPException(status_code=404, detail="Credenziali errate")
+
     start_time = time.time()
-    
+
     try:
-        # 1. Classifica il continente e estrai la città usando il modello ML
-        continente, citta = classifier.predict_continent(request.richiesta)
-        
-        # 2. Dispatching al servizio appropriato (simulato)
-        weather_data = classifier.simulate_weather_service(continente, citta, request.richiesta)
-        
-        # 3. Calcola il tempo di elaborazione
-        processing_time = (time.time() - start_time) * 1000  # in millisecondi
-        
-        # 4. Costruisci la risposta
+        continente, citta = classifier.predict_continent(domanda)
+        if citta:
+            citta = citta.strip()
+            for prefix in ["a ", "ad ", "in ", "da ", "di ", "la ", "il "]:
+                if citta.lower().startswith(prefix):
+                    citta = citta[len(prefix):]
+                    break
+        citta = citta.capitalize()
+        weather_data = classifier.simulate_weather_service(continente, citta, domanda)
+        processing_time = (time.time() - start_time) * 1000
+
         response = DispatchResponse(
-            richiesta_originale=request.richiesta,
+            richiesta_originale=domanda,
             continente_rilevato=continente,
             citta=citta,
             servizio_destinazione=weather_data["service_url"],
@@ -146,7 +149,8 @@ async def get_weather(request: WeatherRequest):
             tempo_elaborazione_ms=round(processing_time, 2),
             timestamp=datetime.now().isoformat()
         )
-        
+
+        add_city(found_user, citta, weather_data)
         return response
         
     except Exception as e:
