@@ -1,7 +1,3 @@
-Ecco la documentazione corretta, formattata in modo accurato e pronta per essere copiata in un file `DOCUMENTATION.md`.
-
----
-
 # 🌦️ Weather Dispatching API – Technical Documentation
 
 ## 📌 Overview
