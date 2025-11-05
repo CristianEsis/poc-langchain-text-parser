@@ -6,7 +6,6 @@ from DatabaseJSON.database import read_db
 from User_Management.manage_data import read_user, update_user, delete_user
 from CitiesManager.Cities import add_city, list_of_city
 #from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
-from llm import question_answer
 from main_weather import main
 from langchain_ollama import ChatOllama
 from weather_service import WeatherService
@@ -96,14 +95,6 @@ def list_of_city_retrieve(auth: UserAuth):
         return list_of_city(auth)
     except Exception as e:
         return error_manager(e)
-
-@app.post("/ask")
-def ask_domanda(payload: dict):
-    domanda = payload.get("domanda", "")
-    if not domanda:
-        return {"error": "Nessuna domanda fornita"}
-    risposta = question_answer(domanda)
-    return {"domanda": domanda, "risposta": risposta}
 
 def clean_response(text: str) -> str:
     """Pulisce la risposta da caratteri di escape"""
