@@ -6,10 +6,44 @@
         "password": "utente1",
         "check_login": true,
         "tentativi": 0,
-        "cities": [
-            "la città che vuoi aggiungere",
-            "Milano"
-        ]
+        "cities": {
+            "roma": {
+                "temperature": 19.5,
+                "humidity": 66.0,
+                "conditions": "Temperato",
+                "source": "European Weather Service",
+                "continent": "Europa",
+                "city": "Roma",
+                "service_url": "https://europe-weather-service.example.com/api",
+                "service_response_time_ms": 200.0,
+                "timestamp": "2025-11-05T10:02:25.701582",
+                "human_description": "A Roma (Europa) ci sono 19.5°C con condizioni temperato. Umidità: 66%."
+            },
+            "new york": {
+                "temperature": 23.5,
+                "humidity": 56.0,
+                "conditions": "Temperato",
+                "source": "European Weather Service",
+                "continent": "Americhe",
+                "city": "New york",
+                "service_url": "https://europe-weather-service.example.com/api",
+                "service_response_time_ms": 200.0,
+                "timestamp": "2025-11-05T10:02:36.465777",
+                "human_description": "A New york (Americhe) ci sono 23.5°C con condizioni temperato. Umidità: 56%."
+            },
+            "pasta e fagioli": {
+                "temperature": 19.4,
+                "humidity": 74.0,
+                "conditions": "Temperato",
+                "source": "European Weather Service",
+                "continent": "Europa",
+                "city": "Pasta e fagioli",
+                "service_url": "https://europe-weather-service.example.com/api",
+                "service_response_time_ms": 200.0,
+                "timestamp": "2025-11-05T10:40:54.637354",
+                "human_description": "A Pasta e fagioli (Europa) ci sono 19.4°C con condizioni temperato. Umidità: 74%."
+            }
+        }
     },
     {
         "id": 0,

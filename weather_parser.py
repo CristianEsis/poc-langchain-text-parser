@@ -36,6 +36,15 @@ SCHEMA JSON RICHIESTO:
 REGOLE IMPORTANTI:
 - "city": stringa con il nome della città (obbligatorio)
 - "metrics": SEMPRE una lista di stringhe, anche se una sola metrica. Valori possibili: "temperature", "humidity", "pressure", "wind_speed", "air_quality"
+- "date_range": se specificato, deve es
+- ⚠️ SE LA RICHIESTA NON È RIGUARDO AL METEO (es. cucina, sport, etc.): 
+  • imposta `"valid": false`
+  • aggiungi `"out_of_context"` a `missing_parameters`
+  • NON tentare di estrarre dati meteo
+
+REGOLE IMPORTANTI:
+- "city": stringa con il nome della città (obbligatorio)
+- "metrics": SEMPRE una lista di stringhe, anche se una sola metrica. Valori possibili: "temperature", "humidity", "pressure", "wind_speed", "air_quality"
 - "date_range": se specificato, deve essere un oggetto con "from_date" e "to", altrimenti null
 - "time_of_day": periodo della giornata richiesto (morning=mattino, afternoon=pomeriggio, evening=sera, night=notte), null se non specificato
 - Se non ci sono metriche specificate, usa: ["temperature"]
@@ -141,6 +150,15 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
 
             # VALIDAZIONE E CORREZIONE DEI TIPI
             # 1. Assicurati che metrics sia una lista
+            # 1. Prima di tutto: controlla se LLM ha rilevato contesto non meteo
+            if "out_of_context" in parsed_dict.get("missing_parameters", []):
+                print(f"[WARNING] Richiesta fuori contesto: {user_input}")
+                return None  # Oppure puoi restituire un oggetto con valid=False
+
+            # 2. Valida che la città sia un nome plausibile (opzionale)
+            if parsed_dict.get("city") and len(parsed_dict["city"].split()) > 3:
+                print(f"[WARNING] Città non valida: {parsed_dict['city']}")
+                return None
             if "metrics" in parsed_dict:
                 if isinstance(parsed_dict["metrics"], dict):
                     parsed_dict["metrics"] = list(parsed_dict["metrics"].keys())
@@ -239,7 +257,7 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
             }
 
             print(f"[DEBUG] Parsed weather request: {parsed_dict}")
-            return parsed_dict
+            
 
             city = parsed_dict["city"].lower() if parsed_dict["city"] else ""
 
@@ -269,12 +287,16 @@ Risposta (SOLO IL JSON, senza testo aggiuntivo, markdown o spiegazioni):
             # Crea l'oggetto WeatherRequest dal dizionario
             weather_request = WeatherRequest(**parsed_dict)
             print(f"[DEBUG] Oggetto WeatherRequest Pydantic:\n{weather_request}\n")
-
             return weather_request
+
 
         except ValidationError as ve:
             print(f"[ERROR] Errore di validazione Pydantic: {ve}")
             return None
         except Exception as e:
             print(f"[ERROR] Errore durante il parsing: {e}")
+            return None
+        
+        except Exception as e:
+        # Gestisci gli errori
             return None
