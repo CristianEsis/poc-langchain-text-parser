@@ -1,8 +1,6 @@
 from pydantic import BaseModel
 import json
 from typing import Any
-#from typing import ClassVar
-#from langchain_core.chat_history import InMemoryChatMessageHistory da rivedere
 
 ADMIN_EMAIL = "admin@cybercats.it"
 ADMIN_PASSWORD = "admin123"
@@ -15,7 +13,6 @@ class User(BaseModel):
     password: str | None = None
     check_login: bool = False
     tentativi: int = 0  
-    #chat_history: ClassVar[InMemoryChatMessageHistory] = InMemoryChatMessageHistory() da rivedere
 
 class City(BaseModel):
     city_name: dict[str, Any]

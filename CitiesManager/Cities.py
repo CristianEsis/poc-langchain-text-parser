@@ -37,6 +37,7 @@ def add_city(user: dict, city_name: str, weather_data: dict = None):
             }
 
     return {"msg": "Utente non trovato nel database"}
+
 def list_of_city(auth: UserAuth):
     db = read_db()
     for u in db:
